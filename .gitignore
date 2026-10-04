@@ -1,0 +1,19 @@
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+*.tar.gz
+*.Rcheck/
+Rplots.pdf
+# Python
+__pycache__/
+.venv/
+# OS
+.DS_Store
+# Raw downloads and licensed drilling data (not redistributed; see README)
+shared/datasets/external/raw/
+paper-1-gmdh-pmm/code/data/
+# Smoke-run outputs
+paper-4-weak-moment-gmdh/results/*_smoke*.csv

@@ -1,0 +1,5 @@
+"candidate","n","best_pmm_tr","best_robust_tr","best_pmm_mae","best_robust_mae","pmm_trmse","robust_trmse","pmm_mae","robust_mae","lse_trmse","pmm_vs_robust_trmse_pct","pmm_vs_robust_mae_pct","pmm_vs_lse_pct","win_rate_trmse","p_wilcox_optimistic","verdict"
+"fremtpl2_severity_raw",4000,"auto-weak","L1","auto-weak","L1",684.1731,686.9303,2446.1442,2428.6773,2151.4211,-0.4,0.72,-68.2,0.767,2.48e-05,"tie"
+"insurance_autobi_loss",1091,"auto-weak","L1","WPMM2","L1",1.6465,1.6989,4.1566,4.2042,3.7096,-3.09,-1.13,-55.62,0.833,6.09e-06,"genuine-positive"
+"insurance_autoclaims_paid",6773,"WPMM3","Huber","WPMM3","L1",951.2667,945.5632,1317.3621,1315.2427,1153.0458,0.6,0.16,-17.5,0.2,1,"tie"
+"fremtpl2_severity_log",4000,"WPMM3","L1","WPMM3","L1",0.7821,0.784,0.79,0.7793,0.8063,-0.24,1.37,-3,0.7,0.0303,"tie"

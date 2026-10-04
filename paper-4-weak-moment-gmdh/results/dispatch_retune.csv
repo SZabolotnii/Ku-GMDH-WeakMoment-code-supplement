@@ -1,0 +1,4 @@
+"dataset","proto","n","LSE","Huber","L1","WPMM2","WPMM3","auto-weak","auto-valgate","oracle_bestpmm","best_robust","autoweak_vs_rob","autovalgate_vs_rob","autovalgate_vs_oracle"
+"islr_credit_balance","random",400,70.1959,60.2745,56.5786,48.6211,54.2675,62.2576,54.8324,48.6211,56.5786,10.04,-3.09,12.77
+"sru_y2_static","blocked",3000,0.0463,0.0942,0.045,0.0377,0.0395,0.0945,0.0431,0.0377,0.045,109.88,-4.23,14.52
+"gas_turbine_nox_2015_raw","blocked",3000,3.7613,3.7647,3.7743,3.7863,3.6955,3.7606,3.8135,3.6955,3.7613,-0.02,1.39,3.19

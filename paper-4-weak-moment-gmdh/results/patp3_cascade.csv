@@ -1,0 +1,10 @@
+"test","arm","trmse_med"
+"syn_sym_heavy","LSE",0.179103504945431
+"syn_sym_heavy","Huber",0.101509156373374
+"syn_sym_heavy","L1",0.111431412555005
+"syn_sym_heavy","WPMM3",0.0958747841479692
+"syn_sym_heavy","PATP3",0.0957652456610783
+"vib_cascade_k5","Huber",0.107134403127799
+"vib_cascade_k5","WPMM3",0.107581269547613
+"vib_cascade_k5","PATP3",0.106586590116318
+"vib_cascade_k5","valgate+PATP3",0.107216871580996

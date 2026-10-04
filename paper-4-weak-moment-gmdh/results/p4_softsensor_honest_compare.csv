@@ -1,0 +1,11 @@
+"dataset","protocol","best_pmm_trmse_method","best_rob_trmse_method","best_pmm_mae_method","best_rob_mae_method","pmm_trmse","rob_trmse","pmm_vs_rob_trmse_pct","pmm_mae","rob_mae","pmm_vs_rob_mae_pct","lse_trmse","pmm_vs_lse_trmse_pct","win_rate_trmse"
+"sru_y1_static","blocked","WPMM2","Huber","WPMM2","ridge-LSE",0.0197,0.0199,-1.09,0.0229,0.0271,-15.4,0.0243,-18.96,1
+"sru_y1_static","random","WPMM3","Huber","auto-weak","L1",0.0177,0.0176,0.27,0.0239,0.0236,1.03,0.0197,-10.22,0.367
+"sru_y1_dynamic","blocked","WPMM2","Huber","WPMM2","Huber",0.0017,0.002,-15.56,0.0037,0.0037,-0.95,0.0039,-55.35,0.8
+"sru_y1_dynamic","random","WPMM3","L1","WPMM3","L1",0.0019,0.0021,-10.83,0.004,0.004,0.4,0.0027,-28.51,0.8
+"sru_y2_static","blocked","WPMM3","LSE","auto","LSE",0.0336,0.0336,0.21,0.038,0.0377,0.7,0.0336,0.21,0.4
+"sru_y2_static","random","auto-weak","L1","auto-weak","L1",0.0286,0.0288,-0.63,0.0325,0.0324,0.51,0.0298,-4,0.767
+"gas_turbine_co_2015_raw","blocked","WPMM3","Huber","WPMM3","L1",0.6125,0.6815,-10.14,0.6879,0.7641,-9.98,0.8272,-25.96,0.8
+"gas_turbine_co_2015_raw","random","auto-weak","Huber","WPMM3","Huber",0.5168,0.5202,-0.66,0.6106,0.6099,0.11,0.5412,-4.51,0.667
+"gas_turbine_nox_2015_raw","blocked","auto-weak","ridge-LSE","auto-weak","ridge-LSE",3.1495,3.7038,-14.97,3.6633,4.0475,-9.49,3.732,-15.61,0.8
+"gas_turbine_nox_2015_raw","random","WPMM3","L1","auto-weak","L1",3.3233,3.3368,-0.41,3.6753,3.6194,1.55,3.5445,-6.24,0.867
