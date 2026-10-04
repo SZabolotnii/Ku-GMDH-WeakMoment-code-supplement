@@ -59,10 +59,11 @@ Rscript experiments/make_latex_tables.R
 Rscript experiments/make_latex_figures.R
 ```
 
-The last three commands rebuild the final evidence layer, Tables 1–2 and
-Figures 1–5 from the shipped CSVs. On the release commit the regenerated
-`final_claim_*.csv` files and both table `.tex` files are byte-identical to the
-ones in the repository (`tables_manifest.csv` differs only in its timestamp).
+The last three commands rebuild the final evidence layer, Tables 2–4 and
+Figures 1–5 from the shipped CSVs (Table 1, the evaluation design, is written in
+the manuscript and has no producer). On the release commit the regenerated
+`final_claim_*.csv` files and the three table `.tex` files are byte-identical to
+the ones in the repository (`tables_manifest.csv` differs only in its timestamp).
 
 ## Map from the paper to the code
 
@@ -73,18 +74,18 @@ suffix to the output names, so a smoke run does not overwrite the archived CSVs
 
 | Paper item | Result CSV(s) in `results/` | Producer script(s) |
 |---|---|---|
-| Cross-sectional rows (Table 1, Fig. 1) | `crosssec_modskew_*.csv` | `run_p4_crosssec_modskew.R` |
-| Insurance severity, freMTPL2 heavy-tail rescue (Table 1, Fig. 2, Section 5.3) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
-| Soft-sensor rows (Table 1) | `p4_softsensor_honest_*.csv` | `run_p4_softsensor_honest.R` |
+| Cross-sectional rows (Table 2, Fig. 1) | `crosssec_modskew_*.csv` | `run_p4_crosssec_modskew.R` |
+| Insurance severity, freMTPL2 heavy-tail rescue (Table 2, Fig. 2, Section 5.3) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
+| Soft-sensor rows (Table 2) | `p4_softsensor_honest_*.csv` | `run_p4_softsensor_honest.R` |
 | Platykurtic family | `platykurtic_family_*.csv` | `run_platykurtic_family.R` |
-| Tree-ensemble baselines (Table 1) | `ml_baselines_crossdomain*.csv` | `export_crossdomain_claim_rows_for_ml.R`, then `ml_baselines_crossdomain.py --trees 300` |
-| Final claim rows, split deltas, meta checkpoint (Table 1, Figs. 1 and 4) | `final_claim_evidence_table.csv`, `final_claim_split_deltas.csv`, `final_claim_meta_analysis.csv` | `build_final_evidence_and_meta.R [Bboot]` |
-| Grouped inference | `grouped_inference_*.csv` | `run_grouped_inference_hardening.R [Bboot]` |
-| Validation-gated selector (Table 2, Fig. 3) | `dispatch_retune.csv` | `run_dispatch_retune.R` |
+| Tree-ensemble baselines (Table 2) | `ml_baselines_crossdomain*.csv` | `export_crossdomain_claim_rows_for_ml.R`, then `ml_baselines_crossdomain.py --trees 300` |
+| Final claim rows, split deltas, meta checkpoint (Tables 2 and 4, Figs. 1 and 4) | `final_claim_evidence_table.csv`, `final_claim_split_deltas.csv`, `final_claim_meta_analysis.csv` | `build_final_evidence_and_meta.R [Bboot]` |
+| Grouped inference (Table 4) | `grouped_inference_*.csv` | `run_grouped_inference_hardening.R [Bboot]` |
+| Validation-gated selector (Table 3, Fig. 3) | `dispatch_retune.csv` | `run_dispatch_retune.R` |
 | Feature-richness boundary (Fig. 5) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
 | Drilling significance analysis and aggregation sensitivity | `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
 | Leakage audit, stacking, drilling tree baselines | `leakage_audit_vibration.csv`, `stacking_blocked.csv`, `ml_baselines_blocked.csv` | `run_leakage_audit.R`, `run_stacking_blocked_cv.R`, `export_blocked_cells_for_ml.R` + `ml_baselines_blocked.py` |
-| Tables 1–2, Figures 1–5 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
+| Tables 2–4, Figures 1–5 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
 
 The remaining `run_weak_*.R` scripts are the development studies behind the
 estimator design (proof of concept, regime map, ablation, WPMM3 bandwidth probe,
