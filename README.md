@@ -2,7 +2,8 @@
 
 Code, derived results and generated tables/figures for the manuscript
 
-> S. Zabolotnii. *Validation-Gated Weak-Moment GMDH for Heavy-Tailed Regression.*
+> S. Zabolotnii. *Validation-Gated Weak-Moment Group Method of Data Handling for
+> Heavy-Tailed Regression.*
 
 The repository contains the `gmdhpmm` R package (GMDH tournament with PMM inner
 estimators, including the weak-windowed WPMM2/WPMM3 estimators and the

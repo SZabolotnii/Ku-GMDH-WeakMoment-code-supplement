@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite it using the metadata below."
-title: "Validation-Gated Weak-Moment GMDH for Heavy-Tailed Regression: code supplement"
+title: "Validation-Gated Weak-Moment Group Method of Data Handling for Heavy-Tailed Regression: code supplement"
 type: software
 authors:
   - family-names: Zabolotnii
