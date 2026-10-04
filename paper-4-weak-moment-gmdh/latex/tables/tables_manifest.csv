@@ -1,4 +1,4 @@
 "table","source_csv","generated_at"
-"table_final_claim_rows.tex","results/final_claim_evidence_table.csv","2026-10-04 12:09:03 EEST"
-"table_validation_gate_selector.tex","results/dispatch_retune.csv","2026-10-04 12:09:03 EEST"
-"table_row_inference.tex","results/final_claim_meta_analysis.csv;results/grouped_inference_summary.csv","2026-10-04 12:09:03 EEST"
+"table_final_claim_rows.tex","results/final_claim_evidence_table.csv","2026-10-04 12:29:04 EEST"
+"table_validation_gate_selector.tex","results/dispatch_retune.csv;results/dispatch_retune_splits.csv","2026-10-04 12:29:04 EEST"
+"table_row_inference.tex","results/final_claim_meta_analysis.csv;results/grouped_inference_summary.csv","2026-10-04 12:29:04 EEST"

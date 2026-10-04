@@ -81,7 +81,7 @@ suffix to the output names, so a smoke run does not overwrite the archived CSVs
 | Tree-ensemble baselines (Table 2) | `ml_baselines_crossdomain*.csv` | `export_crossdomain_claim_rows_for_ml.R`, then `ml_baselines_crossdomain.py --trees 300` |
 | Final claim rows, split deltas, meta checkpoint (Tables 2 and 4, Figs. 1 and 4) | `final_claim_evidence_table.csv`, `final_claim_split_deltas.csv`, `final_claim_meta_analysis.csv` | `build_final_evidence_and_meta.R [Bboot]` |
 | Grouped inference (Table 4) | `grouped_inference_*.csv` | `run_grouped_inference_hardening.R [Bboot]` |
-| Validation-gated selector (Table 3, Fig. 3) | `dispatch_retune.csv` | `run_dispatch_retune.R` |
+| Validation-gated selector (Table 3, Fig. 3) | `dispatch_retune.csv` (medians), `dispatch_retune_splits.csv` (per split) | `run_dispatch_retune.R` |
 | Feature-richness boundary (Fig. 5) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
 | Drilling significance analysis and aggregation sensitivity | `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
 | Leakage audit, stacking, drilling tree baselines | `leakage_audit_vibration.csv`, `stacking_blocked.csv`, `ml_baselines_blocked.csv` | `run_leakage_audit.R`, `run_stacking_blocked_cv.R`, `export_blocked_cells_for_ml.R` + `ml_baselines_blocked.py` |

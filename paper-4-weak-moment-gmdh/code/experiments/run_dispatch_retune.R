@@ -5,7 +5,10 @@
 # the two dispatches {auto-weak (cumulant gate), auto-valgate (validation gate)}, and the
 # oracle reference best-PMM=min(WPMM2,WPMM3) / best-robust=min(LSE,Huber,L1). Run this
 # BEFORE and AFTER editing the auto-valgate inner CV to measure the improvement.
-# Usage: Rscript experiments/run_dispatch_retune.R
+# Usage: Rscript experiments/run_dispatch_retune.R [suffix=""]
+# Writes dispatch_retune<suffix>.csv (medians) and dispatch_retune_splits<suffix>.csv
+# (seed-averaged trimmed-RMSE per split and method, for the per-split figure).
+SUFFIX <- { a <- commandArgs(trailingOnly = TRUE); if (length(a) >= 1) a[[1]] else "" }
 
 .find_pkg <- function() { cur <- normalizePath(getwd(), mustWork = TRUE)
   repeat { cand <- file.path(cur, "paper-1-gmdh-pmm", "code")
@@ -47,7 +50,7 @@ fit_eval <- function(X, y, tr, te) { xs <- std(X, tr, te)
     c(mean(vals[1,], na.rm=TRUE), mean(vals[2,], na.rm=TRUE)) }) }
 
 cat("=== Dispatch re-tuning: does the deployable dispatch capture the oracle win? ===\n")
-rows <- list()
+rows <- list(); splits <- list()
 for (ds in DATASETS) {
   dat <- ds$get(); X <- dat$X; y <- dat$y; n <- length(y); cap <- 3000L
   if (ds$proto == "blocked" && n > cap) { X <- X[1:cap,,drop=FALSE]; y <- y[1:cap]; n <- cap }   # contiguous head, time order
@@ -61,6 +64,8 @@ for (ds in DATASETS) {
       if (length(tr)<80||length(te)<30) next; r <- fit_eval(X,y,tr,te); TR <- rbind(TR, r[1,]); MA <- rbind(MA, r[2,]) }
   }
   colnames(TR) <- METHODS; colnames(MA) <- METHODS
+  splits[[length(splits)+1L]] <- data.frame(dataset=ds$id, proto=ds$proto, split=seq_len(nrow(TR)),
+    TR, check.names=FALSE, row.names=NULL)
   mt <- apply(TR,2,median,na.rm=TRUE); mm <- apply(MA,2,median,na.rm=TRUE)
   bestpmm <- min(mt["WPMM2"],mt["WPMM3"]); bestrob <- min(mt["LSE"],mt["Huber"],mt["L1"])
   cat(sprintf("\n[%s | %s | n=%d]\n", ds$id, ds$proto, n))
@@ -76,5 +81,6 @@ for (ds in DATASETS) {
     autovalgate_vs_oracle=round(100*(mt["auto-valgate"]/bestpmm-1),2),
     check.names=FALSE, row.names=NULL) }
 outdir <- file.path(ROOT,"paper-4-weak-moment-gmdh","results"); if(!dir.exists(outdir)) dir.create(outdir,recursive=TRUE)
-utils::write.csv(do.call(rbind,rows), file.path(outdir,"dispatch_retune.csv"), row.names=FALSE)
-cat("\nSaved dispatch_retune.csv\n")
+utils::write.csv(do.call(rbind,rows), file.path(outdir,paste0("dispatch_retune",SUFFIX,".csv")), row.names=FALSE)
+utils::write.csv(do.call(rbind,splits), file.path(outdir,paste0("dispatch_retune_splits",SUFFIX,".csv")), row.names=FALSE)
+cat("\nSaved dispatch_retune", SUFFIX, ".csv and dispatch_retune_splits", SUFFIX, ".csv\n", sep="")
