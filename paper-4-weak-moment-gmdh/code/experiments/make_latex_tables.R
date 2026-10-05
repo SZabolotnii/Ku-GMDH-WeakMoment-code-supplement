@@ -155,7 +155,7 @@ lesson_tex <- c(
          "Columns 2--3: best weak method against best robust method, each chosen by its median error on the test folds, ",
          "as a ratio of medians minus one (\\%), at tournament seed 0 and at two further seeds. ",
          "Columns 4--5: the validation gate against the row's robust baseline, paired median (\\%) and folds won; ",
-         "five folds averaged over three seeds, and ten folds averaged over five seeds (pre-registered check). ",
+         "five folds averaged over three seeds, and ten folds averaged over five seeds (decision rule fixed before the run).",
          "SRU \\(y_2\\) is the control.}"),
   "\\label{tab:protocol-lesson}",
   "\\small",
