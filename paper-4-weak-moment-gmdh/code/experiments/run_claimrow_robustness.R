@@ -8,6 +8,9 @@
 #   seeds      two extra tournament seeds for all eight Table-2 methods
 #   gap        purge-gap sensitivity on the blocked rows, gap 50 and 100
 #   repro      re-runs two archived cells per row to confirm the splits reproduce
+#   tail       the four robust methods and the gate at tournament seeds 0-2 with the
+#              large-claim error (test cases above the training 90 % quantile of y)
+#              added; run it alone (arms = "tail"), since its rows carry three extra columns
 # The outer splits and tournament seeds follow the producer scripts exactly
 # (run_p4_softsensor_honest.R, run_p4_crosssec_modskew.R, run_insurance_severity.R),
 # so every new fit is paired with the archived fits on the same split.
@@ -50,8 +53,17 @@ fit_one <- function(X, y, train, test, task) {
     return(data.frame(trmse = NA_real_, mae = NA_real_, rmse = NA_real_, q90 = NA_real_, ok = FALSE))
   }
   e <- as.numeric(pred - y[test])
-  data.frame(trmse = p4_trmse(e), mae = mean(abs(e)), rmse = p4_rmse(e),
-             q90 = stats::quantile(abs(e), 0.9, names = FALSE), ok = all(is.finite(e)))
+  out <- data.frame(trmse = p4_trmse(e), mae = mean(abs(e)), rmse = p4_rmse(e),
+                    q90 = stats::quantile(abs(e), 0.9, names = FALSE), ok = all(is.finite(e)))
+  if (identical(task$arm, "tail")) {
+    # Large-claim error: test cases whose response exceeds the 90 % quantile of the
+    # training response (the threshold sees no test outcome).
+    big <- y[test] > stats::quantile(y[train], 0.9, names = FALSE)
+    out$tail_rmse <- if (any(big)) sqrt(mean(e[big]^2)) else NA_real_
+    out$tail_mae <- if (any(big)) mean(abs(e[big])) else NA_real_
+    out$n_tail <- sum(big)
+  }
+  out
 }
 
 splits_for <- function(row, n, gap) {
@@ -89,7 +101,11 @@ for (i in seq_len(nrow(ROWS))) {
     arms <- c(arms, task("gap", "auto-valgate", VG_J, 0L, gap = g))
   }
   for (m in c("Huber", "WPMM2")) arms <- c(arms, task("repro", m, match(m, P4_METHODS), 0L))
+  for (m in P4_ROBUST) arms <- c(arms, task("tail", m, match(m, P4_METHODS), 0:2))
+  arms <- c(arms, task("tail", "auto-valgate", VG_J, 0:2))
+  if (is.null(ONLY_ARMS)) arms <- Filter(function(a) a$arm != "tail", arms)
   if (!is.null(ONLY_ARMS)) arms <- Filter(function(a) a$arm %in% ONLY_ARMS, arms)
+  stopifnot(!("tail" %in% ONLY_ARMS) || identical(ONLY_ARMS, "tail"))
   jobs <- list()
   for (a in arms) {
     sps <- splits_for(row, length(y), a$gap)

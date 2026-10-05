@@ -65,40 +65,44 @@ Rscript experiments/make_latex_figures.R
 ```
 
 These commands read only the shipped CSVs. They rebuild the per-row evidence
-layer, the summaries of the robustness, tuned-tree and ten-fold blocked checks,
-Tables 2–3 and Figures 1–3 (Table 1, the evaluation design, is written in the
+layer, the summaries of the robustness, large-claim, tuned-tree and ten-fold
+blocked checks, Tables 2–4 and Figures 1–2 of the paper and Figure S1 of its
+supplemental material (Table 1, the evaluation design, is written in the
 manuscript and has no producer). On the release commit the regenerated
 `final_claim_*.csv`, `blocked_power_summary.csv` and `claimrow_*.csv` files and
-the two table `.tex` files are byte-identical to the ones in the repository
+the three table `.tex` files are byte-identical to the ones in the repository
 (`tables_manifest.csv` differs only in its timestamp, the figure PDFs only in
 their creation date).
 
 ## Map from the paper to the code
 
-Run every script from `paper-4-weak-moment-gmdh/code/`. Scripts taking `R` use
-`R = 30` replicate splits by default; an optional second argument appends a
-suffix to the output names, so a smoke run does not overwrite the archived CSVs
+Section numbers refer to the Journal of Applied Statistics version of the paper;
+"S" sections are in its supplemental material. Run every script from
+`paper-4-weak-moment-gmdh/code/`. Scripts taking `R` use `R = 30` replicate
+splits by default; an optional second argument appends a suffix to the output
+names, so a smoke run does not overwrite the archived CSVs
 (`Rscript experiments/run_p4_crosssec_modskew.R 1 _smoke`). The same holds for
 `run_claimrow_robustness.R` and `run_blocked_power.R`, whose first argument is
 the number of cores.
 
 | Paper item | Result CSV(s) in `results/` | Producer script(s) |
 |---|---|---|
-| Skew-tilt ablation, proof of concept, regime map (Section 5.1) | `weak_ablation_raw.csv`, `weak_pmm_poc_raw.csv`, `weak_regime_map_raw.csv` | `run_weak_ablation.R`, `run_weak_pmm_poc.R`, `run_weak_regime_map.R` |
-| freMTPL2 heavy-tail rescue (Section 5.2, Fig. 1) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
+| freMTPL2 heavy-tail rescue (Section 5.1, Fig. 1) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
+| Insurance claim severity: gate vs best robust method and vs best tuned tree, MAE, trimmed RMSE, RMSE and large-claim RMSE (Section 5.2, Table 2) | `claimrow_robustness_raw_tail.csv`, `ml_tuned_trees_long_tail.csv`, `claimrow_tail_summary.csv` | `run_claimrow_robustness.R 6 _tail fremtpl2_severity_raw,fremtpl2_severity_log,insurance_autobi_loss,insurance_autoclaims_paid tail`; `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py --tail --suffix _tail --datasets fremtpl2_severity_raw,fremtpl2_severity_log,insurance_autobi_loss,insurance_autoclaims_paid`; `make_claimrow_robustness_summary.R` checks that every refit reproduces the archived trimmed RMSE (it does, to the last digit) |
 | Archived per-split fits of the fifteen datasets (seed 0; inputs to Tables 2–3) | `crosssec_modskew_*.csv`, `insurance_severity_*.csv`, `p4_softsensor_honest_*.csv`, `final_claim_*.csv` | `run_p4_crosssec_modskew.R`, `run_insurance_severity.R`, `run_p4_softsensor_honest.R`, then `build_final_evidence_and_meta.R [Bboot]` |
-| Validation gate on all fifteen datasets, two extra seeds per method (Section 5.3, Table 2, Fig. 2) | `claimrow_robustness_raw.csv` (eight datasets), `claimrow_robustness_raw_pool.csv` (the other seven) | `run_claimrow_robustness.R [cores] [suffix] [datasets] [arms]`; the pool file comes from `run_claimrow_robustness.R 9 _pool mass_boston_medv,islr_wage,airquality_ozone,mass_cars93_mpg,insurance_autoclaims_paid,fremtpl2_severity_log,sru_y1_static valgate,seeds,repro`; the Boston rows were rerun on 2026-10-05 without the race-proxy covariate `black` (the screened formula) and appended, so they come last |
-| Tuned tree ensembles (Section 5.3, Table 2, Fig. 2) | `ml_tuned_trees_long.csv` (tuned and default fits on every outer split) | `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py` |
-| Table 2 and Fig. 2 inputs: gate vs best robust method and vs best tuned tree, untrimmed errors, row-level signed-rank test, gate vs hindsight-best weak estimator | `claimrow_candidate_pool.csv`, `claimrow_tuned_trees_summary.csv`, `claimrow_gate_splits.csv`, `claimrow_untrimmed_summary.csv`, `claimrow_rowlevel_summary.csv`, `claimrow_valgate_summary.csv` | `make_claimrow_robustness_summary.R` |
-| Cumulant-keyed vs validation gate on credit balance, twelve splits (Section 5.3) | `dispatch_retune.csv`, `dispatch_retune_splits.csv` | `run_dispatch_retune.R` |
-| Protocol lesson: five folds, seeds 0–2, purge gaps 50 and 100 (Section 5.4, Table 3) | `claimrow_seeds_summary.csv`, `claimrow_gap_summary.csv`, `claimrow_protocol_lesson.csv` | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R` |
-| Ten-fold, five-seed blocked check with a prespecified rule (Section 5.4, Table 3 last column) | `blocked_power_raw.csv`, `blocked_power_summary.csv` | `run_blocked_power.R`, then `make_blocked_power_summary.R`; the decision rule, written before the run and not registered externally, is in `paper-4-weak-moment-gmdh/blocked-power-prereg-2026-10-04.md` |
-| Gate design checks: interleaved inner folds, library without Huber/LAD (Section 5.5) | `claimrow_ablation_summary.csv` (arms `rinner`, `norobust`) | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R`; interleaved folds are `valgate_inner = "random"` in `gmdh_pmm_control()` |
-| Gate design checks: window width 1.5 and 4 times the robust scale (Section 5.5) | `claimrow_sigma_summary.csv` | as above |
-| Convex stack vs discrete selector (Section 5.5) | `stacking_blocked.csv` | `run_stacking_blocked_cv.R` |
-| Feature-richness boundary (Section 5.6, Fig. 3) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
-| Drilling case study: leakage, aggregation, block bootstrap (Section 4) | `leakage_audit_vibration.csv`, `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_leakage_audit.R`, `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
-| Tables 2–3, Figures 1–3 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
+| Validation gate on all fifteen datasets, two extra seeds per method (Sections 5–6, Tables 2–3, Fig. 2) | `claimrow_robustness_raw.csv` (eight datasets), `claimrow_robustness_raw_pool.csv` (the other seven) | `run_claimrow_robustness.R [cores] [suffix] [datasets] [arms]`; the pool file comes from `run_claimrow_robustness.R 9 _pool mass_boston_medv,islr_wage,airquality_ozone,mass_cars93_mpg,insurance_autoclaims_paid,fremtpl2_severity_log,sru_y1_static valgate,seeds,repro`; the Boston and Wage rows were rerun on 2026-10-05 without the race covariates (`black`, `race`) and appended, so they come last |
+| Tuned tree ensembles (Sections 5–6, Tables 2–3, Fig. 2) | `ml_tuned_trees_long.csv` (tuned and default fits on every outer split) | `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py` |
+| Table 3 and Fig. 2 inputs: gate vs best robust method and vs best tuned tree, untrimmed errors, row-level signed-rank test, gate vs hindsight-best weak estimator | `claimrow_candidate_pool.csv`, `claimrow_tuned_trees_summary.csv`, `claimrow_gate_splits.csv`, `claimrow_untrimmed_summary.csv`, `claimrow_rowlevel_summary.csv`, `claimrow_valgate_summary.csv` | `make_claimrow_robustness_summary.R` |
+| Cumulant-keyed vs validation gate on credit balance, twelve splits (Section 6) | `dispatch_retune.csv`, `dispatch_retune_splits.csv` | `run_dispatch_retune.R` |
+| Protocol lesson: five folds, seeds 0–2, purge gaps 50 and 100 (Section 7, Table 4) | `claimrow_seeds_summary.csv`, `claimrow_gap_summary.csv`, `claimrow_protocol_lesson.csv` | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R` |
+| Ten-fold, five-seed blocked check with a prespecified rule (Section 7, Table 4 last column) | `blocked_power_raw.csv`, `blocked_power_summary.csv` | `run_blocked_power.R`, then `make_blocked_power_summary.R`; the decision rule, written before the run and not registered externally, is in `paper-4-weak-moment-gmdh/blocked-power-prereg-2026-10-04.md` |
+| Drilling case study: leakage, aggregation, block bootstrap (Section S1) | `leakage_audit_vibration.csv`, `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_leakage_audit.R`, `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
+| Skew-tilt ablation, proof of concept, regime map (Section S2) | `weak_ablation_raw.csv`, `weak_pmm_poc_raw.csv`, `weak_regime_map_raw.csv` | `run_weak_ablation.R`, `run_weak_pmm_poc.R`, `run_weak_regime_map.R` |
+| Gate design checks: interleaved inner folds, library without Huber/LAD (Section S3) | `claimrow_ablation_summary.csv` (arms `rinner`, `norobust`) | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R`; interleaved folds are `valgate_inner = "random"` in `gmdh_pmm_control()` |
+| Gate design checks: window width 1.5 and 4 times the robust scale (Section S3) | `claimrow_sigma_summary.csv` | as above |
+| Convex stack vs discrete selector (Section S3) | `stacking_blocked.csv` | `run_stacking_blocked_cv.R` |
+| Feature-richness boundary (Section S4, Fig. S1) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
+| Tables 2–4, Figures 1–2 and S1 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
 
 The remaining scripts are archived with their CSVs: the other development
 studies behind the estimator design (WPMM3 bandwidth probe, cascade and dispatch

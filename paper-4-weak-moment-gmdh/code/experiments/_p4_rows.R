@@ -17,7 +17,8 @@ load_row <- function(id) {
   }
   if (id == "islr_wage") {
     data(Wage, package = "ISLR2")
-    return(p4_frame_to_xy(ISLR2::Wage, wage ~ year + age + maritl + race + education + jobclass +
+    # `race` removed (2026-10-05); the screened formula included it.
+    return(p4_frame_to_xy(ISLR2::Wage, wage ~ year + age + maritl + education + jobclass +
                             health + health_ins))
   }
   if (id == "airquality_ozone") {

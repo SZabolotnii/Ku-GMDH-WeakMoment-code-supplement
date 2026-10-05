@@ -268,3 +268,52 @@ if (file.exists(bp_file)) {
   })
   wr(rnd(do.call(rbind, les)), "claimrow_protocol_lesson.csv")
 }
+
+# Large-claim error on the insurance rows: the `tail` arm of run_claimrow_robustness.R
+# (robust methods and the gate, seed replicates 0-2) and ml_tuned_trees.py --tail. Every
+# refit must reproduce the archived trimmed-RMSE of the same split, method and seed.
+tail_file <- file.path(res_dir, "claimrow_robustness_raw_tail.csv")
+ttail_file <- file.path(res_dir, "ml_tuned_trees_long_tail.csv")
+if (file.exists(tail_file) && file.exists(ttail_file) && exists("trees_sum")) {
+  tl <- rd("claimrow_robustness_raw_tail.csv"); tl <- tl[tl$ok, ]
+  tt_tail <- rd("ml_tuned_trees_long_tail.csv")
+  METRICS <- c("trmse", "rmse", "mae", "tail_rmse", "tail_mae")
+  repro <- function(d, proto, m) {
+    old <- do.call(rbind, lapply(SEEDS, function(s) {
+      z <- if (s == 0L && m != "auto-valgate") arch[arch$dataset == d & arch$method == m, c("split", "trmse")]
+           else new[new$dataset == d & new$method == m & new$seed_rep == s &
+                    new$arm == (if (m == "auto-valgate") "valgate" else "seeds"), c("split", "trmse")]
+      data.frame(z, seed_rep = s)
+    }))
+    x <- merge(tl[tl$dataset == d & tl$method == m, c("split", "seed_rep", "trmse")], old,
+               by = c("split", "seed_rep"))
+    max(abs(x$trmse.x - x$trmse.y))
+  }
+  tail_rows <- lapply(unique(tl$dataset), function(d) {
+    proto <- "random"; rm <- best_rob[[d]]; bt <- trees_sum$best_tuned_tree[trees_sum$dataset == d]
+    avg <- function(m) stats::aggregate(tl[tl$dataset == d & tl$method == m, METRICS],
+                                        by = list(split = tl$split[tl$dataset == d & tl$method == m]), FUN = mean)
+    vg <- avg("auto-valgate"); rb <- avg(rm)
+    tr <- tt_tail[tt_tail$dataset == d & tt_tail$model == bt & tt_tail$variant == "tuned", c("split_id", METRICS)]
+    names(tr)[1] <- "split"
+    old_tr <- tt[tt$dataset == d & tt$model == bt & tt$variant == "tuned", c("split_id", "trmse")]
+    tree_diff <- max(abs(merge(tr, old_tr, by.x = "split", by.y = "split_id")[, c("trmse.x")] -
+                         merge(tr, old_tr, by.x = "split", by.y = "split_id")[, c("trmse.y")]))
+    out <- data.frame(dataset = d, robust_method = rm, best_tuned_tree = bt, n_splits = nrow(vg),
+                      mean_n_tail = mean(tl$n_tail[tl$dataset == d & tl$method == "auto-valgate"]))
+    for (k in METRICS) {
+      a <- pair(vg, rb, k); b <- pair(vg, tr, k)
+      out[[paste0("gate_vs_robust_", k, "_paired_pct")]] <- a[["paired_pct"]]
+      out[[paste0("gate_vs_robust_", k, "_wins")]] <- a[["wins"]]
+      out[[paste0("gate_vs_tree_", k, "_paired_pct")]] <- b[["paired_pct"]]
+      out[[paste0("gate_vs_tree_", k, "_wins")]] <- b[["wins"]]
+    }
+    out$repro_max_abs_diff <- max(repro(d, proto, "auto-valgate"), repro(d, proto, rm), tree_diff)
+    out
+  })
+  tail_sum <- do.call(rbind, tail_rows)
+  cat("tail refits, max |trimmed-RMSE - archived| per dataset:",
+      paste(signif(tail_sum$repro_max_abs_diff, 3), collapse = " "), "\n")
+  if (any(tail_sum$repro_max_abs_diff > 1e-8)) warning("tail refits do not reproduce the archived fits")
+  wr(rnd(tail_sum), "claimrow_tail_summary.csv")
+}

@@ -8,7 +8,7 @@ validation gate uses. Inner folds are contiguous for blocked (time-series) rows 
 shuffled for random-split rows. The untuned defaults of ml_baselines_crossdomain.py are
 refitted alongside, so tuned and default trees are compared on the same splits.
 
-Usage: python ml_tuned_trees.py [--input-dir /tmp/p4_allrows_ml] [--max-splits N] [--suffix S]
+Usage: python ml_tuned_trees.py [--input-dir /tmp/p4_allrows_ml] [--max-splits N] [--suffix S] [--tail]
 """
 from __future__ import annotations
 
@@ -55,9 +55,11 @@ def tune(model, X, y, blocked, seed, trees):
     return best
 
 
-def one_split(ds, proto, role, X, y, sp, trees):
+def one_split(ds, proto, role, X, y, sp, trees, args_tail=False):
     train, test = parse_idx(sp["train_idx"]), parse_idx(sp["test_idx"])
     seed = 91000 + int(sp["split_id"])
+    # large-claim error: test cases above the 90 % quantile of the training response
+    big = y[test] > np.quantile(y[train], 0.9)
     out = []
     for model in GRIDS:
         variants = {"default": None, "tuned": tune(model, X[train], y[train], proto == "blocked", seed, trees)}
@@ -72,6 +74,10 @@ def one_split(ds, proto, role, X, y, sp, trees):
             out.append({"dataset": ds, "protocol": proto, "role": role, "split_id": int(sp["split_id"]),
                         "model": model, "variant": kind, "params": "" if params is None else repr(params),
                         "trmse": trmse(e), "mae": float(np.mean(np.abs(e))), "rmse": rmse(e)})
+            if args_tail:
+                out[-1].update({"tail_rmse": rmse(e[big]) if big.any() else np.nan,
+                                "tail_mae": float(np.mean(np.abs(e[big]))) if big.any() else np.nan,
+                                "n_tail": int(big.sum())})
     return out
 
 
@@ -82,10 +88,15 @@ def main() -> None:
     ap.add_argument("--max-splits", type=int, default=None)
     ap.add_argument("--jobs", type=int, default=9)
     ap.add_argument("--suffix", default="")
+    ap.add_argument("--tail", action="store_true",
+                    help="also write the large-claim error (tail_rmse, tail_mae, n_tail)")
+    ap.add_argument("--datasets", default="", help="comma-separated dataset ids to run (default: all)")
     args = ap.parse_args()
 
     indir = Path(args.input_dir)
     manifest = pd.read_csv(indir / "manifest.csv")
+    if args.datasets:
+        manifest = manifest[manifest["dataset"].isin(args.datasets.split(","))]
     splits = pd.read_csv(indir / "splits.csv")
     out = RESULTS / f"ml_tuned_trees_long{args.suffix}.csv"
     if out.exists():
@@ -99,7 +110,7 @@ def main() -> None:
             sps = sps.head(args.max_splits)
         print(f"[{m['dataset']} | {m['protocol']} | n={len(y)} p={X.shape[1]} splits={len(sps)}]", flush=True)
         res = Parallel(n_jobs=args.jobs)(
-            delayed(one_split)(m["dataset"], m["protocol"], m["role"], X, y, sp, args.tune_trees)
+            delayed(one_split)(m["dataset"], m["protocol"], m["role"], X, y, sp, args.tune_trees, args.tail)
             for _, sp in sps.iterrows())
         # one dataset at a time, so an interrupted run keeps every finished row
         pd.DataFrame([r for chunk in res for r in chunk]).to_csv(
