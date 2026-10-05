@@ -72,21 +72,26 @@ cell <- function(pct, wins, n) {
 }
 
 tree_label <- c(rf = "RF", extra = "ET", hgb = "HGB")
-# Interact tables: \tbl{caption}{body} inside a table float.
+# Interact tables: \tbl{caption}{body} inside a table float. \tbl sets the body in the
+# class's 8 pt \tablefont; a \small here overrides it with 10 pt, and a body wider than
+# the text block is centred into both margins with no Overfull warning.
 float <- function(label, caption, spec, head, body) c(
   "\\begin{table}[t]",
   sprintf("\\tbl{%s}", caption),
-  "{\\small\\setlength{\\tabcolsep}{4pt}",
+  "{\\setlength{\\tabcolsep}{4pt}",
   sprintf("\\begin{tabular}{%s}", spec), "\\toprule", head, "\\midrule", body, "\\bottomrule",
   "\\end{tabular}}", sprintf("\\label{%s}", label), "\\end{table}")
 PAIRED <- paste0("Each cell is the median over splits of the paired relative difference ",
-                 "\\(100(e_{\\text{gate}}/e_{\\text{comparator}}-1)\\), in \\%%, with the number of splits on which the gate is better; ",
+                 "\\(100(e_{\\text{gate}}/e_{\\text{comparator}}-1)\\), in \\%%, with, in parentheses, the number of splits on which the gate is better; ",
                  "negative means the gate is better. ")
 BOLD <- "Bold: at least 2\\,\\%% better and better on at least 70\\,\\%% of at least ten splits."
 
 # Table 2: the four insurance rows, three errors, against the robust baseline and the tuned tree.
 ins <- groups[[1]]
 tl <- read_csv("claimrow_tail_summary.csv")
+# Short row labels: with the full ones the body is 425 pt wide against a 408 pt text block.
+ins_label <- c(fremtpl2_severity_raw = "freMTPL2, raw", fremtpl2_severity_log = "freMTPL2, log",
+               insurance_autobi_loss = "AutoBi", insurance_autoclaims_paid = "AutoClaims")
 ins_body <- character(0)
 for (cmp in c("robust", "tree")) {
   ins_body <- c(ins_body, sprintf("\\multicolumn{6}{@{}l}{\\emph{%s}} \\\\",
@@ -97,7 +102,7 @@ for (cmp in c("robust", "tree")) {
     cells <- vapply(c("mae", "trmse", "rmse", "tail_rmse"), function(k)
       cell(r[[sprintf("gate_vs_%s_%s_paired_pct", cmp, k)]], r[[sprintf("gate_vs_%s_%s_wins", cmp, k)]], r$n_splits),
       character(1))
-    ins_body <- c(ins_body, paste0(paste(sprintf("\\quad %s", dataset_label[[d]]), who, paste(cells, collapse = " & "),
+    ins_body <- c(ins_body, paste0(paste(sprintf("\\quad %s", ins_label[[d]]), who, paste(cells, collapse = " & "),
                                          sep = " & "), " \\\\"))
   }
 }
@@ -115,7 +120,7 @@ ins_tex <- c(
                "histogram gradient boosting (HGB), whichever has the lowest median test error after inner-CV tuning on each outer training set. ",
                "Both comparators are thus chosen by test error, an oracle choice that favours them. ", BOLD)),
         "@{}llrrrr@{}",
-        "dataset & comparator & MAE (wins) & TRMSE (wins) & RMSE (wins) & large claims (wins) \\\\",
+        "dataset & comparator & MAE & TRMSE & RMSE & large claims \\\\",
         ins_body))
 writeLines(ins_tex, file.path(tables_dir, "table_insurance.tex"))
 
