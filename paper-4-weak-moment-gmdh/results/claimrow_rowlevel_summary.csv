@@ -1,7 +1,7 @@
 "group","comparison","rows","negative","positive","median_pct","wilcoxon_p"
-"all 15 rows","gate_vs_robust_paired_pct",15,11,4,-0.38,0.48
+"all 15 rows","gate_vs_robust_paired_pct",15,10,5,-0.25,0.76
 "insurance (4 rows)","gate_vs_robust_paired_pct",4,4,0,-0.27,0.1
-"all 15 rows","gate_vs_robust_rmse_paired_pct",15,5,10,0.2,0.12
+"all 15 rows","gate_vs_robust_rmse_paired_pct",15,4,11,0.2,0.04
 "insurance (4 rows)","gate_vs_robust_rmse_paired_pct",4,2,2,0,1
 "all 15 rows","gate_vs_tuned_paired_pct",15,6,9,7.55,0.41
 "insurance (4 rows)","gate_vs_tuned_paired_pct",4,4,0,-34.74,0.1

@@ -10,8 +10,10 @@ load_row <- function(id) {
                             Own + Student + Married + Region))
   }
   if (id == "mass_boston_medv") {
+    # The screened formula: the race-proxy column `black` is excluded.
     data(Boston, package = "MASS")
-    return(p4_frame_to_xy(MASS::Boston, medv ~ .))
+    return(p4_frame_to_xy(MASS::Boston, medv ~ crim + zn + indus + chas + nox + rm + age + dis +
+                            rad + tax + ptratio + lstat))
   }
   if (id == "islr_wage") {
     data(Wage, package = "ISLR2")

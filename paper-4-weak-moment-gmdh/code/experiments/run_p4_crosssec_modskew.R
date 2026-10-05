@@ -15,8 +15,11 @@ suffix <- if (length(args) >= 2) args[[2]] else ""
 
 load_builtin <- function(id) {
   if (id == "mass_boston_medv") {
+    # The screened formula (shared/datasets/screen_cumulants.R): the race-proxy column
+    # `black` is excluded.
     data(Boston, package = "MASS")
-    return(p4_frame_to_xy(MASS::Boston, medv ~ .))
+    return(p4_frame_to_xy(MASS::Boston, medv ~ crim + zn + indus + chas + nox + rm + age + dis +
+                            rad + tax + ptratio + lstat))
   }
   if (id == "islr_wage") {
     data(Wage, package = "ISLR2")

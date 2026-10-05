@@ -1,5 +1,5 @@
 "dataset","generator","protocol","weak_vs_robust_trmse_pct","outcome","in_table2","table2_role","robust_method","n_splits","gate_vs_robust_ratio_med_pct","gate_vs_robust_paired_pct","gate_wins","gate_vs_robust_rmse_paired_pct","hindsight_weak","gate_vs_hindsight_weak_paired_pct","family_delta_paired_min","family_delta_paired_max"
-"mass_boston_medv","run_p4_crosssec_modskew.R","random",3.45,"robust ahead (>=3%)",FALSE,NA,"L1",30,-0.8,-0.52,17,-1.52,"WPMM3",2.56,-5,0.53
+"mass_boston_medv","run_p4_crosssec_modskew.R","random",1.87,"within 3%",FALSE,NA,"Huber",30,2.06,0.7,15,0.02,"WPMM3",3.01,-5,1.23
 "islr_wage","run_p4_crosssec_modskew.R","random",-0.19,"within 3%",FALSE,NA,"Huber",30,-0.27,-0.54,19,0.79,"WPMM3",0.21,-0.55,-0.45
 "airquality_ozone","run_p4_crosssec_modskew.R","random",-3.36,"weak ahead (>=3%)",FALSE,NA,"Huber",30,6.79,2.79,13,1.29,"auto",2.82,-2.68,2.02
 "islr_credit_balance","run_p4_crosssec_modskew.R","random",-3.45,"weak ahead (>=3%)",TRUE,"modest_positive","L1",30,-10.37,-3.78,22,2.79,"WPMM2",2.51,-11.94,-2.87

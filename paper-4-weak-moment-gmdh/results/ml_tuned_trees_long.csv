@@ -839,186 +839,186 @@ concrete,random,loss_control,30,extra,default,,2.986808544350581,3.2700640427841
 concrete,random,loss_control,30,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",2.986808544350581,3.270064042784129,5.106136287929053
 concrete,random,loss_control,30,hgb,default,,2.8200541865309185,3.0265289882846136,4.569279168811746
 concrete,random,loss_control,30,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.5476743123538603,2.848083196237709,4.41941709047702
-mass_boston_medv,random,pool,1,rf,default,,2.196003968979539,2.3834619422572167,3.4921184443287943
-mass_boston_medv,random,pool,1,rf,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",2.196003968979539,2.3834619422572167,3.4921184443287943
-mass_boston_medv,random,pool,1,extra,default,,2.15402939657878,2.4069186351706024,3.7611593424501555
-mass_boston_medv,random,pool,1,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0873732962213047,2.3308451443569562,3.5495833370998127
-mass_boston_medv,random,pool,1,hgb,default,,2.183684864451386,2.5292094020210625,3.790771403961133
-mass_boston_medv,random,pool,1,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.222401594439963,2.5150312090270255,3.7921540285607067
-mass_boston_medv,random,pool,2,rf,default,,1.9601949136285384,2.184553805774277,3.05173666189324
-mass_boston_medv,random,pool,2,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.937247310567288,2.167330708661417,2.9760267347563
-mass_boston_medv,random,pool,2,extra,default,,1.8375186360461115,2.0128792650918617,2.7519156300967174
-mass_boston_medv,random,pool,2,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8375186360461115,2.0128792650918617,2.7519156300967174
-mass_boston_medv,random,pool,2,hgb,default,,2.10784223663508,2.3203488632661733,3.1447323857218903
-mass_boston_medv,random,pool,2,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.1049722841386167,2.3113462934004683,3.1458739254544197
-mass_boston_medv,random,pool,3,rf,default,,1.7501383958085777,2.0444908136482924,2.9507814450553496
-mass_boston_medv,random,pool,3,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9717438096953945,2.1731338582677155,3.0427810071081103
-mass_boston_medv,random,pool,3,extra,default,,1.6870583733723268,1.926902887139108,2.9998687081215345
-mass_boston_medv,random,pool,3,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7766273768737502,1.9521391076115493,2.744006560237181
-mass_boston_medv,random,pool,3,hgb,default,,1.884099101573916,2.1367278020522247,3.217058722668359
-mass_boston_medv,random,pool,3,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9862191121961938,2.1711059554796734,3.220664401743806
-mass_boston_medv,random,pool,4,rf,default,,1.8734494709166656,2.2721574803149527,3.6067496817552507
-mass_boston_medv,random,pool,4,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.8455315295885997,2.1204488188976334,2.9906526011478536
-mass_boston_medv,random,pool,4,extra,default,,1.6930202201648181,1.958181102362199,3.1196527628014845
-mass_boston_medv,random,pool,4,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6872310993610393,1.9352125984251947,2.872556434726946
-mass_boston_medv,random,pool,4,hgb,default,,1.8207038734240937,2.128269284070863,3.46479560559495
-mass_boston_medv,random,pool,4,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.801394398981388,2.1123371903744705,3.4344473961049076
-mass_boston_medv,random,pool,5,rf,default,,1.987678088187623,2.1660918635170576,3.0384912178604186
-mass_boston_medv,random,pool,5,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9518677971780811,2.1489107611548537,3.193268791094555
-mass_boston_medv,random,pool,5,extra,default,,1.9209015148178805,2.156753280839891,3.3386202011862647
-mass_boston_medv,random,pool,5,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.881875120213856,2.0782270341207325,3.1802764138452164
-mass_boston_medv,random,pool,5,hgb,default,,1.9339877056880996,2.108769154132419,3.0694528607362352
-mass_boston_medv,random,pool,5,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9200328651845635,2.072195749750444,3.0694705899418815
-mass_boston_medv,random,pool,6,rf,default,,1.9325169182639093,2.1883228346456716,3.154599570558631
-mass_boston_medv,random,pool,6,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.937433535299657,2.1531469816273017,3.0798781024554023
-mass_boston_medv,random,pool,6,extra,default,,1.8197792421756644,1.9954619422572237,2.834952384255759
-mass_boston_medv,random,pool,6,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8197792421756644,1.9954619422572237,2.834952384255759
-mass_boston_medv,random,pool,6,hgb,default,,2.03021193601266,2.201746531894999,3.1657006920005424
-mass_boston_medv,random,pool,6,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0692749145377984,2.2234451142768807,3.199069097077757
-mass_boston_medv,random,pool,7,rf,default,,2.024438975541623,2.337881889763779,3.646358613978099
-mass_boston_medv,random,pool,7,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.073271258778176,2.2979553805774278,3.1344809546028753
-mass_boston_medv,random,pool,7,extra,default,,1.9675830108240544,2.187325459317589,3.1620091480170482
-mass_boston_medv,random,pool,7,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9545816413717652,2.1187821522309753,2.9504623529606344
-mass_boston_medv,random,pool,7,hgb,default,,1.8737474947238228,2.136651184831193,3.2914368438896893
-mass_boston_medv,random,pool,7,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.866074673266016,2.1482913719884054,3.371166043903171
-mass_boston_medv,random,pool,8,rf,default,,2.24484652852866,2.4891811023622004,3.5725632793488558
-mass_boston_medv,random,pool,8,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.210199518218069,2.551178477690285,3.7657576585306343
-mass_boston_medv,random,pool,8,extra,default,,2.0192007878458815,2.3306115485564294,3.501169355589348
-mass_boston_medv,random,pool,8,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9642443552011515,2.243149606299212,3.4092530348256775
-mass_boston_medv,random,pool,8,hgb,default,,2.1807388688218694,2.5927009282828073,3.8747446908506773
-mass_boston_medv,random,pool,8,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.2069965242189347,2.6002644238372032,3.923436113310131
-mass_boston_medv,random,pool,9,rf,default,,2.389308998895441,2.7231364829396316,4.2492501162330045
-mass_boston_medv,random,pool,9,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.305519464876404,2.513181102362205,3.589882654045433
-mass_boston_medv,random,pool,9,extra,default,,2.1901979996744116,2.4308503937007893,3.5444003193484033
-mass_boston_medv,random,pool,9,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1174158620809975,2.3214317585301867,3.2921235851849886
-mass_boston_medv,random,pool,9,hgb,default,,2.361333156625567,2.6476788076814985,3.8828740361935723
-mass_boston_medv,random,pool,9,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.368553548507912,2.6407917667440417,3.8825772465241264
-mass_boston_medv,random,pool,10,rf,default,,2.010410550577004,2.264685039370077,3.3518558752426926
-mass_boston_medv,random,pool,10,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9175979359747384,2.1918425196850384,3.3322174872488763
-mass_boston_medv,random,pool,10,extra,default,,1.8626157389107938,2.200821522309711,3.495905657562744
-mass_boston_medv,random,pool,10,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7866027717256032,2.126834645669291,3.1580569704363235
-mass_boston_medv,random,pool,10,hgb,default,,1.93403120807194,2.2040376146875236,3.347637495516141
-mass_boston_medv,random,pool,10,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9696128794486012,2.2594870029177994,3.396699988309112
-mass_boston_medv,random,pool,11,rf,default,,1.846211245487081,2.138244094488187,3.5342994770570577
-mass_boston_medv,random,pool,11,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8432976776581804,2.004388451443567,3.0253671294103337
-mass_boston_medv,random,pool,11,extra,default,,1.7455578591860197,2.1131076115485556,3.381124546449032
-mass_boston_medv,random,pool,11,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.7455578591860197,2.1131076115485556,3.381124546449032
-mass_boston_medv,random,pool,11,hgb,default,,1.8202207247190458,2.1556046400819717,3.5305943094855334
-mass_boston_medv,random,pool,11,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.834246393889772,2.208210668813263,3.5907912547830305
-mass_boston_medv,random,pool,12,rf,default,,1.8452702037252768,2.0498005249343803,3.213549388299661
-mass_boston_medv,random,pool,12,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8159494887823748,1.959952755905509,2.794878667877012
-mass_boston_medv,random,pool,12,extra,default,,1.778745984613254,1.9427742782152206,2.8465367727161377
-mass_boston_medv,random,pool,12,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7598246260423056,1.8786535433070835,2.586411094370223
-mass_boston_medv,random,pool,12,hgb,default,,1.7520524596645397,2.0169624241188475,3.182273513604339
-mass_boston_medv,random,pool,12,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.782885630012732,2.0603605476788616,3.1847261035453798
-mass_boston_medv,random,pool,13,rf,default,,2.1097856872675096,2.2395669291338605,3.0409732862291095
-mass_boston_medv,random,pool,13,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0243102776970385,2.1448818897637807,2.929481822444289
-mass_boston_medv,random,pool,13,extra,default,,1.8631518768418573,2.0439790026246754,2.7916616167933377
-mass_boston_medv,random,pool,13,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8631518768418573,2.0439790026246754,2.7916616167933377
-mass_boston_medv,random,pool,13,hgb,default,,2.0638110164495544,2.186259241993748,2.9346618927292663
-mass_boston_medv,random,pool,13,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.114077253933478,2.2885329247739374,3.0432917398060852
-mass_boston_medv,random,pool,14,rf,default,,1.6878556120863712,1.8777480314960635,2.587258867255891
-mass_boston_medv,random,pool,14,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6511824961153105,1.8710708661417341,2.640989037673741
-mass_boston_medv,random,pool,14,extra,default,,1.5832129935801256,1.807892388451446,2.6126950756221525
-mass_boston_medv,random,pool,14,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6089345736331169,1.767646981627298,2.5490898808577094
-mass_boston_medv,random,pool,14,hgb,default,,1.6375310433485388,1.812219767541897,2.71557159606711
-mass_boston_medv,random,pool,14,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.6754880064437943,1.857106872510924,2.74024740287928
-mass_boston_medv,random,pool,15,rf,default,,1.8723266962017946,1.9761181102362178,2.6780797077868734
-mass_boston_medv,random,pool,15,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.8728775682028929,1.9691771653543313,2.6517340258052458
-mass_boston_medv,random,pool,15,extra,default,,1.8302023423750395,2.106312335958005,3.0861277975850423
-mass_boston_medv,random,pool,15,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7422577011376588,1.9376614173228328,2.683889971853332
-mass_boston_medv,random,pool,15,hgb,default,,2.1139014419222577,2.322304135780772,3.2500969654873395
-mass_boston_medv,random,pool,15,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.065295797481297,2.2922781326304813,3.3123988160594102
-mass_boston_medv,random,pool,16,rf,default,,2.0453436232176303,2.2592073490813647,3.340848065802325
-mass_boston_medv,random,pool,16,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.992115787772094,2.2580551181102346,3.43295421944291
-mass_boston_medv,random,pool,16,extra,default,,1.8226192931381167,2.060645669291337,3.2170897337820064
-mass_boston_medv,random,pool,16,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8226192931381167,2.060645669291337,3.2170897337820064
-mass_boston_medv,random,pool,16,hgb,default,,2.134283552325295,2.4165772297685186,3.6462709151795614
-mass_boston_medv,random,pool,16,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.1159528343532865,2.4488749611104446,3.750444765763922
-mass_boston_medv,random,pool,17,rf,default,,2.0833766250472743,2.569732283464564,4.46703169699715
-mass_boston_medv,random,pool,17,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0349459849817575,2.510330708661416,4.125023897595081
-mass_boston_medv,random,pool,17,extra,default,,1.9757584656581548,2.440619422572172,3.9141962278654536
-mass_boston_medv,random,pool,17,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9435405178795153,2.4156062992125933,3.7843079110590665
-mass_boston_medv,random,pool,17,hgb,default,,1.972093705608852,2.4652418766351722,3.84590170892064
-mass_boston_medv,random,pool,17,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.974688803775924,2.4172731621420436,3.844857589389034
-mass_boston_medv,random,pool,18,rf,default,,1.9772555193724677,2.4098398950131243,4.089175885823069
-mass_boston_medv,random,pool,18,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.0130086598230084,2.4101968503937,3.94985470933386
-mass_boston_medv,random,pool,18,extra,default,,1.89574740541724,2.15948031496063,3.317273317156339
-mass_boston_medv,random,pool,18,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7958932763635256,2.1040931758530177,3.390256575358701
-mass_boston_medv,random,pool,18,hgb,default,,2.0345517060120923,2.4776229187289296,4.135393800943304
-mass_boston_medv,random,pool,18,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.962811474406233,2.3844963599571596,4.152579513314346
-mass_boston_medv,random,pool,19,rf,default,,1.7544837030669447,1.8682125984252016,2.5902204064819956
-mass_boston_medv,random,pool,19,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7351317989274306,1.9036850393700822,2.642596251157504
-mass_boston_medv,random,pool,19,extra,default,,1.7521920974022323,1.8967690288713968,2.6559811454798377
-mass_boston_medv,random,pool,19,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.7521920974022323,1.8967690288713968,2.6559811454798377
-mass_boston_medv,random,pool,19,hgb,default,,1.8355467543412776,1.9687909864695325,2.670497479235014
-mass_boston_medv,random,pool,19,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8481882371414635,1.9757839166666,2.7131929039316147
-mass_boston_medv,random,pool,20,rf,default,,1.9531240594539647,2.187921259842519,3.2167103112647015
-mass_boston_medv,random,pool,20,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9733007450485998,2.097910761154856,2.9082017178741304
-mass_boston_medv,random,pool,20,extra,default,,1.7321293051688003,1.9623412073490787,3.00199036744444
-mass_boston_medv,random,pool,20,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8624871241231087,2.0288293963254564,2.778667596605153
-mass_boston_medv,random,pool,20,hgb,default,,2.1523803501078596,2.3223620404727123,3.3156435607306913
-mass_boston_medv,random,pool,20,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.189370475192698,2.379904719710372,3.351712467913029
-mass_boston_medv,random,pool,21,rf,default,,2.0856149258452246,2.2356036745406787,3.0246054425519024
-mass_boston_medv,random,pool,21,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.976490463582253,2.12151181102362,2.8781308019938607
-mass_boston_medv,random,pool,21,extra,default,,2.012947750246932,2.1057480314960637,2.758306806257295
-mass_boston_medv,random,pool,21,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9468657928076794,2.019133858267718,2.6086852958680966
-mass_boston_medv,random,pool,21,hgb,default,,2.1331064922117515,2.3028475879346697,3.3140904315268243
-mass_boston_medv,random,pool,21,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0599383444477524,2.2899945190488995,3.292639124834672
-mass_boston_medv,random,pool,22,rf,default,,2.0775314962555225,2.3300656167978984,3.2051450251971345
-mass_boston_medv,random,pool,22,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0093172780764625,2.2072467191601017,2.9879450065562994
-mass_boston_medv,random,pool,22,extra,default,,1.9757658985732374,2.2493280839895013,3.2632475027519723
-mass_boston_medv,random,pool,22,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9103784953171905,2.1105708661417317,2.850477896149907
-mass_boston_medv,random,pool,22,hgb,default,,2.1545524689334035,2.3656042989269,3.2889481600385295
-mass_boston_medv,random,pool,22,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.150318822211727,2.400971080224846,3.3521498485755767
-mass_boston_medv,random,pool,23,rf,default,,2.1896968407489545,2.4889317585301796,3.5741924539905088
-mass_boston_medv,random,pool,23,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0918989976046474,2.3982283464566896,3.6074028880449998
-mass_boston_medv,random,pool,23,extra,default,,1.9431254309863275,2.297551181102362,3.6189531909932406
-mass_boston_medv,random,pool,23,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8514340677465309,2.18146456692913,3.4689315622720236
-mass_boston_medv,random,pool,23,hgb,default,,2.1494539985567758,2.447719801233601,3.7726590793037516
-mass_boston_medv,random,pool,23,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.1395262825941863,2.435880408705235,3.7681812896070235
-mass_boston_medv,random,pool,24,rf,default,,1.6145846667792982,1.9227454068241439,3.2568283730676586
-mass_boston_medv,random,pool,24,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6749882266613623,1.8331863517060338,2.659319636840148
-mass_boston_medv,random,pool,24,extra,default,,1.6285714045408313,1.8249868766404163,2.812398277581079
-mass_boston_medv,random,pool,24,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.5323662288301874,1.7282572178477664,2.530856412753842
-mass_boston_medv,random,pool,24,hgb,default,,1.730863092295596,1.9852057346759864,3.212179488944314
-mass_boston_medv,random,pool,24,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.729026698707365,1.9696238327715372,3.261872544046112
-mass_boston_medv,random,pool,25,rf,default,,1.9601231915177988,2.2552808398950117,3.477076711109942
-mass_boston_medv,random,pool,25,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9496540613822575,2.1528031496062985,3.0796240186487
-mass_boston_medv,random,pool,25,extra,default,,1.861175604189364,2.018519685039372,2.977108914838967
-mass_boston_medv,random,pool,25,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8028237494926949,1.963813648293965,2.8696507173731134
-mass_boston_medv,random,pool,25,hgb,default,,2.3906866375410964,2.606136831709559,3.818087728971523
-mass_boston_medv,random,pool,25,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.359185998383704,2.5950291913116414,3.8473323427510406
-mass_boston_medv,random,pool,26,rf,default,,1.7148520872910737,1.8429947506561686,2.4795601017796924
-mass_boston_medv,random,pool,26,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6038377469427856,1.7279081364829376,2.413076675894187
-mass_boston_medv,random,pool,26,extra,default,,1.6747996799128724,1.8827506561679797,2.8158082212319884
-mass_boston_medv,random,pool,26,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6539114120968863,1.9267086614173212,2.832285682179115
-mass_boston_medv,random,pool,26,hgb,default,,1.818873094761698,1.9653683327566878,2.7616994410493336
-mass_boston_medv,random,pool,26,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8786880005129292,2.037936220215894,2.847007516502256
-mass_boston_medv,random,pool,27,rf,default,,1.7741978708124162,2.276139107611545,3.6466008260333242
-mass_boston_medv,random,pool,27,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9018831003732524,2.2448110236220464,3.249998165555708
-mass_boston_medv,random,pool,27,extra,default,,1.8076813991784222,2.2901443569553797,3.7071585543117296
-mass_boston_medv,random,pool,27,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.753612648687681,2.12549868766404,3.352160361243038
-mass_boston_medv,random,pool,27,hgb,default,,1.955554191273287,2.330376767772879,3.7726451094104303
-mass_boston_medv,random,pool,27,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9154765408658685,2.3348399472383075,3.7151981029011525
-mass_boston_medv,random,pool,28,rf,default,,2.205563854256924,2.8342677165354275,4.762013946603531
-mass_boston_medv,random,pool,28,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1659787990409143,2.620034120734903,4.088595678261355
-mass_boston_medv,random,pool,28,extra,default,,2.033138852984852,2.449254593175848,4.025842593970366
-mass_boston_medv,random,pool,28,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",2.033138852984852,2.449254593175848,4.025842593970366
-mass_boston_medv,random,pool,28,hgb,default,,1.944552471604432,2.5340264795351444,4.210600455218804
-mass_boston_medv,random,pool,28,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9455760111073515,2.5057653547559666,4.216237677677722
-mass_boston_medv,random,pool,29,rf,default,,2.2835042414801148,2.3474330708661353,3.121535595534788
-mass_boston_medv,random,pool,29,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.298894399497062,2.3484435695537984,3.1976097001355104
-mass_boston_medv,random,pool,29,extra,default,,2.214342924598465,2.262666666666665,3.0126466653108834
-mass_boston_medv,random,pool,29,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.247672209986975,2.3467821522309684,3.2118410726739772
-mass_boston_medv,random,pool,29,hgb,default,,2.3929658397234146,2.4115177833519557,3.2394508425139676
-mass_boston_medv,random,pool,29,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.340324151884158,2.3942908094431443,3.184863656592019
-mass_boston_medv,random,pool,30,rf,default,,1.8938486223266404,2.340658792650922,3.7714440060325343
-mass_boston_medv,random,pool,30,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9342881887844328,2.2808320209973765,3.613460237018592
-mass_boston_medv,random,pool,30,extra,default,,1.7705131850953566,2.137401574803154,3.5588471050904062
-mass_boston_medv,random,pool,30,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.7705131850953566,2.137401574803154,3.5588471050904062
-mass_boston_medv,random,pool,30,hgb,default,,2.3284963147794113,2.7070270955030615,4.134117922370016
-mass_boston_medv,random,pool,30,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.330729537394328,2.709555245196694,4.128950830761725
+mass_boston_medv,random,pool,1,rf,default,,2.27778769781038,2.442293963254594,3.529883527084947
+mass_boston_medv,random,pool,1,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1586359118665666,2.3744015748031493,3.3419301704579287
+mass_boston_medv,random,pool,1,extra,default,,2.2071221219958588,2.5034120734908125,3.881292446256572
+mass_boston_medv,random,pool,1,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1006201678715297,2.383955380577429,3.7371770512428157
+mass_boston_medv,random,pool,1,hgb,default,,2.218700865931042,2.5437255189779084,3.8337966095277776
+mass_boston_medv,random,pool,1,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.248294902369165,2.5720372935371203,3.8379272689086887
+mass_boston_medv,random,pool,2,rf,default,,2.0108902129015074,2.214430446194223,3.087935467358192
+mass_boston_medv,random,pool,2,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.003215319183071,2.2151889763779504,3.044198832953945
+mass_boston_medv,random,pool,2,extra,default,,1.8848123008291078,2.0669658792650885,2.8283044709202496
+mass_boston_medv,random,pool,2,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8848123008291078,2.0669658792650885,2.8283044709202496
+mass_boston_medv,random,pool,2,hgb,default,,2.1356991088574273,2.348521324691773,3.1770894024292633
+mass_boston_medv,random,pool,2,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.2130471462160286,2.4247292776657536,3.2618257308222547
+mass_boston_medv,random,pool,3,rf,default,,1.7669645715947293,2.030207349081362,2.9871174014555786
+mass_boston_medv,random,pool,3,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9872989843422215,2.1403617672790847,2.9980809545453844
+mass_boston_medv,random,pool,3,extra,default,,1.627912410355505,1.91082152230971,3.1404156139508768
+mass_boston_medv,random,pool,3,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7712879274774256,1.960635170603671,2.8723902782806454
+mass_boston_medv,random,pool,3,hgb,default,,1.9766011096043192,2.186704296541172,3.2394481770077888
+mass_boston_medv,random,pool,3,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.051440420314092,2.2318646855141635,3.231589426727225
+mass_boston_medv,random,pool,4,rf,default,,1.8723026183130425,2.235994750656158,3.5272747579183186
+mass_boston_medv,random,pool,4,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8084670538318612,2.096664041994741,3.120164482254971
+mass_boston_medv,random,pool,4,extra,default,,1.7509384011439062,1.988818897637791,3.0971264705292856
+mass_boston_medv,random,pool,4,extra,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.875297418256653,2.096207349081364,2.9819956841810513
+mass_boston_medv,random,pool,4,hgb,default,,1.910370115312706,2.198896929349785,3.5041048058350177
+mass_boston_medv,random,pool,4,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9010571837944343,2.1734037159395694,3.4932468376557266
+mass_boston_medv,random,pool,5,rf,default,,2.0380234708268996,2.2092388451443536,3.0755777674568012
+mass_boston_medv,random,pool,5,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9314588276039024,2.1444015748031484,3.2682909480200646
+mass_boston_medv,random,pool,5,extra,default,,1.9580758623827605,2.2274593175852986,3.4114716992605483
+mass_boston_medv,random,pool,5,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.931498349790562,2.15308398950131,3.2882153651850468
+mass_boston_medv,random,pool,5,hgb,default,,1.9610087745283296,2.1159231364248305,3.0479676188350378
+mass_boston_medv,random,pool,5,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9187660323083562,2.1274570773832995,3.141361038787919
+mass_boston_medv,random,pool,6,rf,default,,1.9546240454034658,2.184341207349084,3.1541648077257687
+mass_boston_medv,random,pool,6,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9797441047450866,2.183698162729664,3.201838180351776
+mass_boston_medv,random,pool,6,extra,default,,1.7750606554169857,1.993792650918641,2.8593906485499505
+mass_boston_medv,random,pool,6,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.7750606554169857,1.993792650918641,2.8593906485499505
+mass_boston_medv,random,pool,6,hgb,default,,2.1361394218710332,2.2530413863340977,3.1510511519036277
+mass_boston_medv,random,pool,6,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.2334109882455753,2.3513052596955815,3.2632866068794235
+mass_boston_medv,random,pool,7,rf,default,,2.0371365074774617,2.362236220472442,3.6318937240435822
+mass_boston_medv,random,pool,7,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.038296608764819,2.224013123359581,3.0671379403658814
+mass_boston_medv,random,pool,7,extra,default,,1.8562307742127653,2.0941889763779566,3.104893620069941
+mass_boston_medv,random,pool,7,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9109411392097815,2.070206036745409,2.9108188773889996
+mass_boston_medv,random,pool,7,hgb,default,,1.9018117894813262,2.1768324353488957,3.315852040464957
+mass_boston_medv,random,pool,7,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9123096574822813,2.199189220309779,3.3923476613943837
+mass_boston_medv,random,pool,8,rf,default,,2.2170238915430094,2.4672362204724383,3.562247762401554
+mass_boston_medv,random,pool,8,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1789267262490895,2.496755905511807,3.5782883110637327
+mass_boston_medv,random,pool,8,extra,default,,2.0251998532043953,2.326309711286087,3.4451005267691484
+mass_boston_medv,random,pool,8,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0374328731213818,2.320078740157477,3.4760064693018307
+mass_boston_medv,random,pool,8,hgb,default,,2.254691248161498,2.643927822543557,4.013390542818861
+mass_boston_medv,random,pool,8,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.1230701406191046,2.5796203981992623,3.946579210748554
+mass_boston_medv,random,pool,9,rf,default,,2.3775316335678887,2.693608923884515,4.180332790023492
+mass_boston_medv,random,pool,9,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.3408846039574116,2.527913385826774,3.618814985998478
+mass_boston_medv,random,pool,9,extra,default,,2.2476589306689774,2.485960629921264,3.6223283528054284
+mass_boston_medv,random,pool,9,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.20833669171101,2.4197060367454113,3.374378147759529
+mass_boston_medv,random,pool,9,hgb,default,,2.3967672862245024,2.6721471657272358,3.9034572709337048
+mass_boston_medv,random,pool,9,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.394839711610546,2.682702619522745,3.976192829383594
+mass_boston_medv,random,pool,10,rf,default,,2.0156744693220645,2.2632257217847753,3.3627296768050052
+mass_boston_medv,random,pool,10,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9229696943579486,2.1756010498687655,3.2978866304758836
+mass_boston_medv,random,pool,10,extra,default,,1.9198316301967933,2.2625538057742753,3.556109215354763
+mass_boston_medv,random,pool,10,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.943273692636518,2.2531509186351677,3.3091666075107526
+mass_boston_medv,random,pool,10,hgb,default,,1.996256975103883,2.272749149535988,3.4296879464974954
+mass_boston_medv,random,pool,10,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0275132794397135,2.2898069422045517,3.4225393178848345
+mass_boston_medv,random,pool,11,rf,default,,1.833687889957767,2.1363595800524906,3.5344150029316537
+mass_boston_medv,random,pool,11,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8342295549981866,2.0197007874015727,3.1507791004182657
+mass_boston_medv,random,pool,11,extra,default,,1.730122962086109,2.1031837270341187,3.4545724827386657
+mass_boston_medv,random,pool,11,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.730122962086109,2.1031837270341187,3.4545724827386657
+mass_boston_medv,random,pool,11,hgb,default,,1.9324181872629085,2.273547660123925,3.606560739554987
+mass_boston_medv,random,pool,11,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8799154181676625,2.2480251351532736,3.5823001587783936
+mass_boston_medv,random,pool,12,rf,default,,1.8771972292814167,2.0750629921259818,3.194822010795739
+mass_boston_medv,random,pool,12,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9082156167886195,2.0375196850393746,2.736840702296412
+mass_boston_medv,random,pool,12,extra,default,,1.80309324022455,1.9510866141732262,2.888955330112873
+mass_boston_medv,random,pool,12,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.817594488174011,1.9331955380577417,2.722174248925583
+mass_boston_medv,random,pool,12,hgb,default,,1.7923294634612874,2.019897418174723,3.106324323072923
+mass_boston_medv,random,pool,12,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8023313114790607,2.054223850898319,3.162542979760721
+mass_boston_medv,random,pool,13,rf,default,,2.0531625819012223,2.188404199475066,3.0457681885310515
+mass_boston_medv,random,pool,13,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.8625371770430366,2.0742178477690305,2.8708137223958707
+mass_boston_medv,random,pool,13,extra,default,,1.8153839360539301,1.9865721784776926,2.811214998720107
+mass_boston_medv,random,pool,13,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7639734788161807,1.920024934383204,2.6701057700942914
+mass_boston_medv,random,pool,13,hgb,default,,1.9396987535122958,2.0945342569643093,2.87295934624538
+mass_boston_medv,random,pool,13,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0502040966762953,2.2563518457664142,3.054526966748512
+mass_boston_medv,random,pool,14,rf,default,,1.7188197282683846,1.8903228346456706,2.598564186122086
+mass_boston_medv,random,pool,14,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.7574784202546625,1.978939632545934,2.6972185420386463
+mass_boston_medv,random,pool,14,extra,default,,1.5743116379955664,1.794847769028879,2.5994638283885867
+mass_boston_medv,random,pool,14,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.5977781868904513,1.7534540682414734,2.51090366453961
+mass_boston_medv,random,pool,14,hgb,default,,1.8166490356131637,1.9569526717237005,2.8469477548467332
+mass_boston_medv,random,pool,14,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.7759511479951609,1.9322203744004676,2.8323828884045104
+mass_boston_medv,random,pool,15,rf,default,,1.9192094970500844,2.064144356955376,2.7862240341237694
+mass_boston_medv,random,pool,15,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.8869053332496084,1.9915444006999117,2.669770793848663
+mass_boston_medv,random,pool,15,extra,default,,1.8442997300200494,2.107317585301831,3.1991116034953375
+mass_boston_medv,random,pool,15,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.8442997300200494,2.107317585301831,3.1991116034953375
+mass_boston_medv,random,pool,15,hgb,default,,2.097557849156258,2.2584964432876258,3.1781756999904838
+mass_boston_medv,random,pool,15,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0982670913056216,2.275368903104184,3.2175946328877862
+mass_boston_medv,random,pool,16,rf,default,,1.9945236138972555,2.2003753280839895,3.3072412983103194
+mass_boston_medv,random,pool,16,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9539885671781092,2.221128608923882,3.37314209488734
+mass_boston_medv,random,pool,16,extra,default,,1.895807280715536,2.1604986876640386,3.3892755802501675
+mass_boston_medv,random,pool,16,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8036523439337713,2.0927007874015726,3.2544351869144323
+mass_boston_medv,random,pool,16,hgb,default,,2.072189541340307,2.352289113794037,3.591804301962428
+mass_boston_medv,random,pool,16,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.0786342175673913,2.347023331344492,3.6401523423465068
+mass_boston_medv,random,pool,17,rf,default,,2.075908477233028,2.546191601049866,4.35348934427215
+mass_boston_medv,random,pool,17,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.04620104209688,2.5170892388451427,4.108752886958429
+mass_boston_medv,random,pool,17,extra,default,,2.0258412836233526,2.4853543307086525,3.9352680330173784
+mass_boston_medv,random,pool,17,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",2.0258412836233526,2.4853543307086525,3.9352680330173784
+mass_boston_medv,random,pool,17,hgb,default,,2.0058133048172926,2.431161625523142,3.7678704689093356
+mass_boston_medv,random,pool,17,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.980760306190196,2.423304586077371,3.767531731198455
+mass_boston_medv,random,pool,18,rf,default,,2.0401172559754146,2.445443569553807,4.047274626030795
+mass_boston_medv,random,pool,18,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.039126457230403,2.4262729658792677,3.931517033821245
+mass_boston_medv,random,pool,18,extra,default,,1.981183342512039,2.2513963254593166,3.464231623846339
+mass_boston_medv,random,pool,18,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8871440833765194,2.1717165354330716,3.421081661665362
+mass_boston_medv,random,pool,18,hgb,default,,2.106547259966911,2.518659711085215,4.171191749459099
+mass_boston_medv,random,pool,18,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.122363164969221,2.565866791572482,4.2540308469806165
+mass_boston_medv,random,pool,19,rf,default,,1.7653377030055846,1.8941023622047288,2.6019026736572264
+mass_boston_medv,random,pool,19,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7178794952030236,1.8742939632545952,2.5717419654113693
+mass_boston_medv,random,pool,19,extra,default,,1.7128290102411265,1.865440944881895,2.629587544709839
+mass_boston_medv,random,pool,19,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",1.7128290102411265,1.865440944881895,2.629587544709839
+mass_boston_medv,random,pool,19,hgb,default,,1.8277722896040751,1.9903789301410768,2.7088803561195975
+mass_boston_medv,random,pool,19,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.863272386434987,1.9879900070098437,2.7289437793633393
+mass_boston_medv,random,pool,20,rf,default,,1.9469226059420712,2.2098031496062984,3.278807694785951
+mass_boston_medv,random,pool,20,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.9366449933865937,2.0864173228346456,2.886740063956298
+mass_boston_medv,random,pool,20,extra,default,,1.734738619496523,2.0179790026246693,3.1508584068333656
+mass_boston_medv,random,pool,20,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.882882901163314,2.116805774278214,3.048351754198133
+mass_boston_medv,random,pool,20,hgb,default,,2.1937692277678527,2.333415528283411,3.335205522281014
+mass_boston_medv,random,pool,20,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.221185125669016,2.3924329909698687,3.3439605462662474
+mass_boston_medv,random,pool,21,rf,default,,2.0696211599261436,2.222464566929131,3.051273276240461
+mass_boston_medv,random,pool,21,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0442068372763202,2.197721784776901,3.015810344376091
+mass_boston_medv,random,pool,21,extra,default,,2.018591112613455,2.1415433070866134,2.823873746183281
+mass_boston_medv,random,pool,21,extra,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",2.1161661341813707,2.2207020997375313,2.878371196028407
+mass_boston_medv,random,pool,21,hgb,default,,2.1334331260607797,2.394436283200793,3.3965471450372555
+mass_boston_medv,random,pool,21,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.169020827859663,2.387306851033139,3.547924117772231
+mass_boston_medv,random,pool,22,rf,default,,2.096860497599626,2.3481312335957982,3.229443922294377
+mass_boston_medv,random,pool,22,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.0188801906432055,2.215241469816273,3.0121252364518303
+mass_boston_medv,random,pool,22,extra,default,,1.973524986988766,2.2670419947506537,3.4121557383899006
+mass_boston_medv,random,pool,22,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9805434798644366,2.2122650918635176,3.055990781427192
+mass_boston_medv,random,pool,22,hgb,default,,2.202211918110002,2.3836922186583136,3.3426054681118735
+mass_boston_medv,random,pool,22,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.08919506331104,2.3086635984628185,3.346417844481313
+mass_boston_medv,random,pool,23,rf,default,,2.1809768274851717,2.517170603674537,3.5962672903229858
+mass_boston_medv,random,pool,23,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1123920349125025,2.4101286089238805,3.605592564843817
+mass_boston_medv,random,pool,23,extra,default,,1.991052216260345,2.3310183727034106,3.5919302667395767
+mass_boston_medv,random,pool,23,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.861030352441771,2.1711338582677104,3.5067780078728115
+mass_boston_medv,random,pool,23,hgb,default,,2.178690917094546,2.481840945956398,3.784778626223304
+mass_boston_medv,random,pool,23,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.159769583002837,2.4364468921927043,3.7778756363651538
+mass_boston_medv,random,pool,24,rf,default,,1.6511064855743376,1.9704619422572147,3.2579533962993437
+mass_boston_medv,random,pool,24,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.7699268239077863,1.908874015748029,2.598914847071215
+mass_boston_medv,random,pool,24,extra,default,,1.5892563658190195,1.8269343832020954,2.92987683639866
+mass_boston_medv,random,pool,24,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.5272807311604109,1.7492178477690257,2.6949432972380105
+mass_boston_medv,random,pool,24,hgb,default,,1.7461915723116623,2.0224117117699976,3.3041129912040015
+mass_boston_medv,random,pool,24,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8274873782069194,2.0938958360999,3.4162347949524725
+mass_boston_medv,random,pool,25,rf,default,,1.9460382637493572,2.2513385826771666,3.5011997321353245
+mass_boston_medv,random,pool,25,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.9556623856053834,2.177304461942257,3.1762907901713007
+mass_boston_medv,random,pool,25,extra,default,,1.834866674305152,2.0533307086614196,3.1148211043029463
+mass_boston_medv,random,pool,25,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.8363471270973903,2.0015446194225714,2.9687114530351937
+mass_boston_medv,random,pool,25,hgb,default,,2.3299603631238757,2.5957206899087937,3.8363405868437535
+mass_boston_medv,random,pool,25,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.331503400830824,2.6091477242009997,3.841770504065986
+mass_boston_medv,random,pool,26,rf,default,,1.7045169863982208,1.8572545931758515,2.498776090960514
+mass_boston_medv,random,pool,26,rf,tuned,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",1.7194450241380614,1.8819702537182859,2.6545660413139296
+mass_boston_medv,random,pool,26,extra,default,,1.6674942357668852,1.9374593175853034,3.005196628076657
+mass_boston_medv,random,pool,26,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6996194454227835,2.008391076115482,3.001835525525954
+mass_boston_medv,random,pool,26,hgb,default,,1.8217328669403188,1.9931670426931347,2.8333703478477013
+mass_boston_medv,random,pool,26,hgb,tuned,"{'learning_rate': 0.1, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.8212949027178,2.010652886657504,2.8710365915091085
+mass_boston_medv,random,pool,27,rf,default,,1.776841876639812,2.2630026246719135,3.6073239027404473
+mass_boston_medv,random,pool,27,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7634723491228483,2.1534409448818885,3.274716532782453
+mass_boston_medv,random,pool,27,extra,default,,1.689774276712073,2.223805774278214,3.758647470154572
+mass_boston_medv,random,pool,27,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.6997998271095647,2.13287401574803,3.4579734547597774
+mass_boston_medv,random,pool,27,hgb,default,,2.036486543124792,2.3516738947658995,3.818518669221618
+mass_boston_medv,random,pool,27,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",1.9477680018265309,2.3273112155342774,3.754234852171892
+mass_boston_medv,random,pool,28,rf,default,,2.262989071562579,2.8590209973753202,4.7015431688812415
+mass_boston_medv,random,pool,28,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.187336364695578,2.672853018372698,4.153685525884692
+mass_boston_medv,random,pool,28,extra,default,,2.0230787256590914,2.4397349081364776,3.91112310575638
+mass_boston_medv,random,pool,28,extra,tuned,"{'max_features': 1.0, 'min_samples_leaf': 1}",2.0230787256590914,2.4397349081364776,3.91112310575638
+mass_boston_medv,random,pool,28,hgb,default,,2.0460179751838448,2.5731950213268417,4.198137174617914
+mass_boston_medv,random,pool,28,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.003259273349414,2.5249979339826876,4.189975946341154
+mass_boston_medv,random,pool,29,rf,default,,2.2819521060333394,2.3281076115485506,3.0643742577280073
+mass_boston_medv,random,pool,29,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.255230758670558,2.291398950131229,3.1249753579430903
+mass_boston_medv,random,pool,29,extra,default,,2.169476961965488,2.2449632545931735,2.9560751853280665
+mass_boston_medv,random,pool,29,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",2.1377817614642285,2.2624881889763766,3.062113629670675
+mass_boston_medv,random,pool,29,hgb,default,,2.360002018077619,2.4033495537191825,3.1850344818423846
+mass_boston_medv,random,pool,29,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.318222686211369,2.3858778694962104,3.1512964269264216
+mass_boston_medv,random,pool,30,rf,default,,1.9173456542052663,2.3531049868766454,3.761161658683021
+mass_boston_medv,random,pool,30,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.870389616300342,2.25057480314961,3.4047102912148266
+mass_boston_medv,random,pool,30,extra,default,,1.779434127697575,2.1549501312335986,3.6347933210072947
+mass_boston_medv,random,pool,30,extra,tuned,"{'max_features': 0.5, 'min_samples_leaf': 1}",1.7067887885766426,2.062440944881893,3.4013050634621402
+mass_boston_medv,random,pool,30,hgb,default,,2.3561633625526492,2.73425679263249,4.106681519320029
+mass_boston_medv,random,pool,30,hgb,tuned,"{'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20}",2.3062143410806253,2.7141170743210448,4.1275301361894465
 islr_wage,random,pool,1,rf,default,,23.240862387015074,26.713108105032006,39.06142610827468
 islr_wage,random,pool,1,rf,tuned,"{'max_features': 0.5, 'min_samples_leaf': 20}",20.45460581515257,23.674288864724165,35.74350383364334
 islr_wage,random,pool,1,extra,default,,25.375377944936012,28.290605158461094,41.34895988818279

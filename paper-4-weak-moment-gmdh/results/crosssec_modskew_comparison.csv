@@ -1,5 +1,5 @@
 "candidate","best_pmm_method_tr","best_pmm_method_mae","best_robust_tr","best_robust_mae","pmm_vs_robust_trmse_pct","pmm_vs_robust_mae_pct","pmm_vs_lse_trmse_pct","pmm_win_rate_trmse","pmm_win_rate_mae","wilcox_p_trmse_optimistic","best_pmm_trmse","best_rob_trmse","lse_trmse"
-"mass_boston_medv","WPMM3","WPMM3","L1","Huber",3.45,-3.85,-6.35,0.633,NA,0.00642,2.641,2.5529,2.8202
+"mass_boston_medv","WPMM3","WPMM3","Huber","Huber",1.87,-2.96,-5.08,0.6,NA,0.122,2.6357,2.5874,2.7769
 "islr_wage","WPMM3","WPMM3","Huber","Huber",-0.19,0.39,-3.87,0.667,NA,0.00773,20.3609,20.4002,21.18
 "airquality_ozone","auto-weak","WPMM2","Huber","L1",-3.36,-2.9,-9.16,0.567,NA,0.0886,13.098,13.553,14.4191
 "islr_credit_balance","WPMM2","WPMM3","L1","L1",-3.45,1,-25.5,0.733,NA,0.00202,51.6459,53.4891,69.3266
