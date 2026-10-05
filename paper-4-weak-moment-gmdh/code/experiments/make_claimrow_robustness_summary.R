@@ -317,3 +317,36 @@ if (file.exists(tail_file) && file.exists(ttail_file) && exists("trees_sum")) {
   if (any(tail_sum$repro_max_abs_diff > 1e-8)) warning("tail refits do not reproduce the archived fits")
   wr(rnd(tail_sum), "claimrow_tail_summary.csv")
 }
+
+# What the weak estimators add: the full gate (`selfreq`, seeds 0-2) against the gate with
+# LSE, Huber and LAD only (`noweak`), and the share of partial models that use each inner
+# estimator. `selfreq` must reproduce the archived `valgate` fits exactly.
+lib_file <- file.path(res_dir, "claimrow_robustness_raw_noweak.csv")
+if (file.exists(lib_file)) {
+  lb <- rd("claimrow_robustness_raw_noweak.csv"); lb <- lb[lb$ok, ]
+  CNT <- c("n_LSE", "n_Huber", "n_L1", "n_WPMM2", "n_WPMM3")
+  lib_rows <- lapply(unique(lb$dataset), function(d) {
+    avg <- function(arm) stats::aggregate(lb[lb$dataset == d & lb$arm == arm, c("trmse", "rmse", "mae")],
+                                          by = list(split = lb$split[lb$dataset == d & lb$arm == arm]), FUN = mean)
+    full <- avg("selfreq"); nw <- avg("noweak")
+    old <- new[new$dataset == d & new$arm == "valgate" & new$seed_rep %in% SEEDS, c("split", "seed_rep", "trmse")]
+    rp <- merge(lb[lb$dataset == d & lb$arm == "selfreq", c("split", "seed_rep", "trmse")], old,
+                by = c("split", "seed_rep"))
+    out <- data.frame(dataset = d, n_splits = nrow(full),
+                      repro_max_abs_diff = max(abs(rp$trmse.x - rp$trmse.y)))
+    for (k in c("mae", "trmse", "rmse")) {
+      a <- pair(full, nw, k)
+      out[[paste0("full_vs_noweak_", k, "_paired_pct")]] <- a[["paired_pct"]]
+      out[[paste0("full_vs_noweak_", k, "_wins")]] <- a[["wins"]]
+    }
+    cnt <- colSums(lb[lb$dataset == d & lb$arm == "selfreq", CNT])
+    for (m in CNT) out[[sub("^n_", "share_", m)]] <- 100 * cnt[[m]] / sum(cnt)
+    out$share_weak <- 100 * (cnt[["n_WPMM2"]] + cnt[["n_WPMM3"]]) / sum(cnt)
+    out
+  })
+  lib_sum <- do.call(rbind, lib_rows)
+  cat("selfreq refits, max |trimmed-RMSE - archived valgate| per dataset:",
+      paste(signif(lib_sum$repro_max_abs_diff, 3), collapse = " "), "\n")
+  if (any(lib_sum$repro_max_abs_diff > 1e-8)) warning("selfreq refits do not reproduce the archived gate")
+  wr(rnd(lib_sum), "claimrow_library_summary.csv")
+}

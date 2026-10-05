@@ -61,7 +61,7 @@ Rscript experiments/build_final_evidence_and_meta.R 10000
 Rscript experiments/make_blocked_power_summary.R
 Rscript experiments/make_claimrow_robustness_summary.R
 Rscript experiments/make_latex_tables.R
-Rscript experiments/make_latex_figures.R
+Rscript experiments/make_latex_figures.R   # needs Ghostscript to embed the fonts
 ```
 
 These commands read only the shipped CSVs. They rebuild the per-row evidence
@@ -89,6 +89,7 @@ the number of cores.
 |---|---|---|
 | freMTPL2 heavy-tail rescue (Section 5.1, Fig. 1) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
 | Insurance claim severity: gate vs best robust method and vs best tuned tree, MAE, trimmed RMSE, RMSE and large-claim RMSE (Section 5.2, Table 2) | `claimrow_robustness_raw_tail.csv`, `ml_tuned_trees_long_tail.csv`, `claimrow_tail_summary.csv` | `run_claimrow_robustness.R 6 _tail fremtpl2_severity_raw,fremtpl2_severity_log,insurance_autobi_loss,insurance_autoclaims_paid tail`; `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py --tail --suffix _tail --datasets fremtpl2_severity_raw,fremtpl2_severity_log,insurance_autobi_loss,insurance_autoclaims_paid`; `make_claimrow_robustness_summary.R` checks that every refit reproduces the archived trimmed RMSE (it does, to the last digit) |
+| What the windowed estimators contribute: gate without WPMM2/WPMM3, and the share of partial models using each inner estimator (Sections 5.2 and 6) | `claimrow_robustness_raw_noweak.csv`, `claimrow_library_summary.csv` | `run_claimrow_robustness.R 9 _noweak fremtpl2_severity_raw,fremtpl2_severity_log,insurance_autobi_loss,insurance_autoclaims_paid,islr_credit_balance noweak,selfreq`, then `make_claimrow_robustness_summary.R`, which checks that `selfreq` reproduces the archived gate fits |
 | Archived per-split fits of the fifteen datasets (seed 0; inputs to Tables 2–3) | `crosssec_modskew_*.csv`, `insurance_severity_*.csv`, `p4_softsensor_honest_*.csv`, `final_claim_*.csv` | `run_p4_crosssec_modskew.R`, `run_insurance_severity.R`, `run_p4_softsensor_honest.R`, then `build_final_evidence_and_meta.R [Bboot]` |
 | Validation gate on all fifteen datasets, two extra seeds per method (Sections 5–6, Tables 2–3, Fig. 2) | `claimrow_robustness_raw.csv` (eight datasets), `claimrow_robustness_raw_pool.csv` (the other seven) | `run_claimrow_robustness.R [cores] [suffix] [datasets] [arms]`; the pool file comes from `run_claimrow_robustness.R 9 _pool mass_boston_medv,islr_wage,airquality_ozone,mass_cars93_mpg,insurance_autoclaims_paid,fremtpl2_severity_log,sru_y1_static valgate,seeds,repro`; the Boston and Wage rows were rerun on 2026-10-05 without the race covariates (`black`, `race`) and appended, so they come last |
 | Tuned tree ensembles (Sections 5–6, Tables 2–3, Fig. 2) | `ml_tuned_trees_long.csv` (tuned and default fits on every outer split) | `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py` |

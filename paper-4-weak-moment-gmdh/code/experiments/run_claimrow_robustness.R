@@ -11,6 +11,10 @@
 #   tail       the four robust methods and the gate at tournament seeds 0-2 with the
 #              large-claim error (test cases above the training 90 % quantile of y)
 #              added; run it alone (arms = "tail"), since its rows carry three extra columns
+#   noweak     ablation: the gate with LSE, Huber and LAD only (no weak estimators), seeds 0-2
+#   selfreq    the full gate at seeds 0-2, recording which inner estimator each partial
+#              model kept by the tournament uses; run noweak and selfreq together, apart
+#              from the other arms
 # The outer splits and tournament seeds follow the producer scripts exactly
 # (run_p4_softsensor_honest.R, run_p4_crosssec_modskew.R, run_insurance_severity.R),
 # so every new fit is paired with the archived fits on the same split.
@@ -63,6 +67,13 @@ fit_one <- function(X, y, train, test, task) {
     out$tail_mae <- if (any(big)) mean(abs(e[big])) else NA_real_
     out$n_tail <- sum(big)
   }
+  if (task$arm %in% c("noweak", "selfreq")) {
+    # Inner estimator chosen at each partial model the tournament keeps (top F per layer).
+    nodes <- Filter(function(z) !is.null(z) && identical(z$type, "model"), fit$nodes)
+    tab <- table(factor(vapply(nodes, function(z) z$method, character(1)),
+                        levels = c("LSE", "Huber", "L1", "WPMM2", "WPMM3")))
+    for (m in names(tab)) out[[paste0("n_", m)]] <- as.integer(tab[[m]])
+  }
   out
 }
 
@@ -103,9 +114,13 @@ for (i in seq_len(nrow(ROWS))) {
   for (m in c("Huber", "WPMM2")) arms <- c(arms, task("repro", m, match(m, P4_METHODS), 0L))
   for (m in P4_ROBUST) arms <- c(arms, task("tail", m, match(m, P4_METHODS), 0:2))
   arms <- c(arms, task("tail", "auto-valgate", VG_J, 0:2))
-  if (is.null(ONLY_ARMS)) arms <- Filter(function(a) a$arm != "tail", arms)
+  arms <- c(arms, task("noweak", "auto-valgate", VG_J, 0:2, cands = c("LSE", "Huber", "L1")),
+            task("selfreq", "auto-valgate", VG_J, 0:2))
+  extra <- c("tail", "noweak", "selfreq")   # arms with extra columns: run them on their own
+  if (is.null(ONLY_ARMS)) arms <- Filter(function(a) !(a$arm %in% extra), arms)
   if (!is.null(ONLY_ARMS)) arms <- Filter(function(a) a$arm %in% ONLY_ARMS, arms)
-  stopifnot(!("tail" %in% ONLY_ARMS) || identical(ONLY_ARMS, "tail"))
+  stopifnot(!any(ONLY_ARMS %in% extra) || identical(ONLY_ARMS, "tail") ||
+              all(ONLY_ARMS %in% c("noweak", "selfreq")))
   jobs <- list()
   for (a in arms) {
     sps <- splits_for(row, length(y), a$gap)

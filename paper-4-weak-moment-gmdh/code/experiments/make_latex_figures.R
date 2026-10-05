@@ -16,11 +16,20 @@ read_result <- function(name) {
 }
 
 open_pdf <- function(name, width = 7.2, height = 4.8) {
-  pdf(file.path(fig_dir, name), width = width, height = height, useDingbats = FALSE)
+  .cur_pdf <<- file.path(fig_dir, name)
+  pdf(.cur_pdf, width = width, height = height, useDingbats = FALSE)
   par(family = "Helvetica", mar = c(4.4, 7.2, 2.2, 1.2), las = 1, cex = 0.9)
 }
 
-close_pdf <- function() invisible(dev.off())
+# Journals reject PDFs with unembedded fonts, and pdf() does not embed the base-14
+# fonts; Ghostscript (embedFonts) embeds them after the device is closed.
+close_pdf <- function() {
+  invisible(dev.off())
+  tmp <- tempfile(fileext = ".pdf")
+  grDevices::embedFonts(.cur_pdf, outfile = tmp,
+                        options = "-dPDFSETTINGS=/prepress -dEmbedAllFonts=true -dSubsetFonts=true")
+  invisible(file.copy(tmp, .cur_pdf, overwrite = TRUE))
+}
 
 # Validation gate on all fifteen candidate rows. Each point is one split: the gate's
 # trimmed-RMSE divided by the comparator's on the same split (gate and robust baseline

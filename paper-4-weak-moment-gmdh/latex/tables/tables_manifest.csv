@@ -1,4 +1,4 @@
 "table","source_csv","generated_at"
-"table_insurance.tex","results/claimrow_tail_summary.csv","2026-10-05 19:36:34 EEST"
-"table_pool_rows.tex","results/claimrow_candidate_pool.csv;results/claimrow_tuned_trees_summary.csv","2026-10-05 19:36:34 EEST"
-"table_protocol_lesson.tex","results/claimrow_protocol_lesson.csv","2026-10-05 19:36:34 EEST"
+"table_insurance.tex","results/claimrow_tail_summary.csv","2026-10-05 19:57:02 EEST"
+"table_pool_rows.tex","results/claimrow_candidate_pool.csv;results/claimrow_tuned_trees_summary.csv","2026-10-05 19:57:02 EEST"
+"table_protocol_lesson.tex","results/claimrow_protocol_lesson.csv","2026-10-05 19:57:02 EEST"
