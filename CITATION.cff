@@ -16,3 +16,13 @@ keywords:
   - weak moments
   - heavy-tailed regression
   - R
+references:
+  - type: software
+    title: "gmdhpmm: Group Method of Data Handling with Polynomial Maximization Method Estimators"
+    authors:
+      - family-names: Zabolotnii
+        given-names: Serhii
+        orcid: "https://orcid.org/0000-0003-0242-2234"
+    version: "0.2.0"
+    repository-code: "https://github.com/SZabolotnii/EstemPMM-GMDH"
+    license: GPL-3.0-only

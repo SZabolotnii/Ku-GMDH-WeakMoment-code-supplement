@@ -16,9 +16,23 @@
 #'   "reserve-aware" (actuarial C5 experiments), or "spike-aware" (industrial
 #'   emissions C5 experiments).
 #' @param pmm_mode PMM3 kappa handling: "fixed" (default) or "adaptive".
-#' @param force_method estimation override: "auto" (default), "LSE",
-#'   "ridge-LSE", "Huber", "L1", "PMM2", or "PMM3". Used for ablations
-#'   and baselines.
+#' @param force_method inner estimator: "auto" (default, cumulant dispatch
+#'   between LSE, PMM2 and PMM3), "auto-weak" (cumulant dispatch that adds the
+#'   windowed estimators, \code{\link{dispatch_method_weak}}), "auto-valgate"
+#'   (validation gate: the candidate with the lowest inner-cross-validated
+#'   trimmed RMSE), or one fixed estimator: "LSE", "ridge-LSE", "Huber", "L1",
+#'   "PMM2", "PMM3", "WPMM2", "WPMM3" or "PATP3".
+#' @param valgate_candidates estimators compared by \code{"auto-valgate"}
+#'   (default LSE, Huber, L1, WPMM2, WPMM3).
+#' @param valgate_folds number of inner folds for \code{"auto-valgate"}
+#'   (default 4); nodes with fewer than 40 rows fall back to LSE.
+#' @param patp_alpha PATP exponent for \code{"PATP3"}; NULL (default) chooses
+#'   it per fit.
+#' @param weak_sigma_mult window width of the windowed estimators WPMM2 and
+#'   WPMM3, as a multiple of the robust residual scale (default 2.5).
+#' @param kurt_heavy_skew,kurt_heavy_sym excess-kurtosis thresholds of
+#'   \code{"auto-weak"} above which a skewed (default 8) or symmetric
+#'   (default 3) residual is sent to WPMM2 or WPMM3.
 #' @param ridge_lambda ridge penalty for "ridge-LSE" (default 1e-8, matching
 #'   EstemPMM's PMM2 regularization scale). The intercept is not penalized.
 #' @param huber_k Huber tuning constant for the "Huber" baseline (default 1.345).

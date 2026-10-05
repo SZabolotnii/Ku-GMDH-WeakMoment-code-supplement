@@ -11,6 +11,13 @@ validation-gated dispatch `auto-valgate`), the experiment scripts that produced
 every number in the paper, the result CSVs those scripts wrote, and the scripts
 that turn the CSVs into the paper's tables and figures.
 
+The package is developed and released separately at
+<https://github.com/SZabolotnii/EstemPMM-GMDH> (`remotes::install_github("SZabolotnii/EstemPMM-GMDH@v0.2.0")`).
+The copy under `paper-1-gmdh-pmm/code/` is identical to release
+[v0.2.0](https://github.com/SZabolotnii/EstemPMM-GMDH/releases/tag/v0.2.0) in
+`DESCRIPTION`, `NAMESPACE`, `R/` and `tests/`; it is kept here so that every
+script reproduces the paper without network access.
+
 ## Layout
 
 The directory names mirror the research repository the results were produced
