@@ -168,7 +168,12 @@ if (file.exists(fs_path)) {
            col = scol[[s]], cex = 1.2)
     lab <- ifelse(d$feat_set == "k2", paste0(s, ", 2 features"),
                   c(k3_gyromed = "+ GyroXmed (control)", k3_ShXrms = "+ ShXrms")[d$feat_set])
-    text(d$gamma3, d$bestweak_vs_best_pct, lab, pos = ifelse(d$feat_set == "k2", 1, 4),
+    # A right-hand label that would run past the plot frame goes to the left of its point
+    # ("+ GyroXmed (control)" on CSS-008).
+    near_right <- d$gamma3 + strwidth(lab, cex = 0.72) + 2 * strwidth("m", cex = 0.72) >
+      par("usr")[2]
+    text(d$gamma3, d$bestweak_vs_best_pct, lab,
+         pos = ifelse(d$feat_set == "k2", 1, ifelse(near_right, 2, 4)),
          cex = 0.72, col = scol[[s]], offset = 0.6)
   }
   close_pdf()
