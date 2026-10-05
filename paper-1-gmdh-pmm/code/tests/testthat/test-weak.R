@@ -77,4 +77,12 @@ test_that("auto-valgate (contiguous k-fold inner CV) runs, honors valgate_folds/
                           gmdh_pmm_control(B = 0, force_method = "auto-valgate",
                                            valgate_candidates = c("LSE", "WPMM2"), valgate_folds = 3L))
   expect_true(e_vg2$method %in% c("LSE", "WPMM2"))
+  # the inner-fold ablation: default stays blocked, "random" runs and leaves the RNG untouched
+  expect_equal(gmdh_pmm_control()$valgate_inner, "blocked")
+  expect_error(gmdh_pmm_control(valgate_inner = "shuffled"))
+  set.seed(7); r0 <- runif(1); set.seed(7)
+  e_vr <- inner_estimate(m$v1, m$v2, m$d$y,
+                         gmdh_pmm_control(B = 0, force_method = "auto-valgate", valgate_inner = "random"))
+  expect_equal(runif(1), r0)
+  expect_true(e_vr$method %in% c("LSE", "Huber", "L1", "WPMM2", "WPMM3"))
 })

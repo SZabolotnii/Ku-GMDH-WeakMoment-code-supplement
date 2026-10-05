@@ -29,6 +29,8 @@ the working directory to `paper-1-gmdh-pmm/code/DESCRIPTION`.
 |       |-- kg2.R, gmdh.R             KG-2 partial model, MIA tournament
 |       `-- external_criterion.R, control.R
 |-- paper-4-weak-moment-gmdh/
+|   |-- blocked-power-prereg-2026-10-04.md   decision rule of the ten-fold blocked
+|   |                                        check, written before the run
 |   |-- code/experiments/             experiment, evidence and table/figure scripts
 |   |-- results/                      derived result CSVs (the paper's evidence)
 |   `-- latex/{tables,figures}/       tables and figures as generated from results/
@@ -45,52 +47,66 @@ the working directory to `paper-1-gmdh-pmm/code/DESCRIPTION`.
 - R packages: `EstemPMM` (PMM2/PMM3 solvers; CRAN), `data.table`, `pkgload`,
   `testthat`; for the cross-sectional datasets `MASS`, `ISLR2`, `boot`,
   `insuranceData`.
-- Python >= 3.10 with `numpy`, `pandas`, `scikit-learn` for the tree-ensemble
-  baselines only.
+- Python >= 3.10 with `numpy`, `pandas`, `scikit-learn`, `joblib` for the
+  tree-ensemble baselines only.
 
 ## Quick check
 
 ```bash
 cd paper-1-gmdh-pmm/code
-Rscript -e 'testthat::test_local(".")'          # 118 tests, 0 failures
+Rscript -e 'testthat::test_local(".")'          # 122 tests, 0 failures
 
 cd ../../paper-4-weak-moment-gmdh/code
 Rscript experiments/build_final_evidence_and_meta.R 10000
+Rscript experiments/make_blocked_power_summary.R
+Rscript experiments/make_claimrow_robustness_summary.R
 Rscript experiments/make_latex_tables.R
 Rscript experiments/make_latex_figures.R
 ```
 
-The last three commands rebuild the final evidence layer, Tables 2–4 and
-Figures 1–5 from the shipped CSVs (Table 1, the evaluation design, is written in
-the manuscript and has no producer). On the release commit the regenerated
-`final_claim_*.csv` files and the three table `.tex` files are byte-identical to
-the ones in the repository (`tables_manifest.csv` differs only in its timestamp).
+These commands read only the shipped CSVs. They rebuild the per-row evidence
+layer, the summaries of the robustness, tuned-tree and ten-fold blocked checks,
+Tables 2–3 and Figures 1–3 (Table 1, the evaluation design, is written in the
+manuscript and has no producer). On the release commit the regenerated
+`final_claim_*.csv`, `blocked_power_summary.csv` and `claimrow_*.csv` files and
+the two table `.tex` files are byte-identical to the ones in the repository
+(`tables_manifest.csv` differs only in its timestamp, the figure PDFs only in
+their creation date).
 
 ## Map from the paper to the code
 
 Run every script from `paper-4-weak-moment-gmdh/code/`. Scripts taking `R` use
 `R = 30` replicate splits by default; an optional second argument appends a
 suffix to the output names, so a smoke run does not overwrite the archived CSVs
-(`Rscript experiments/run_p4_crosssec_modskew.R 1 _smoke`).
+(`Rscript experiments/run_p4_crosssec_modskew.R 1 _smoke`). The same holds for
+`run_claimrow_robustness.R` and `run_blocked_power.R`, whose first argument is
+the number of cores.
 
 | Paper item | Result CSV(s) in `results/` | Producer script(s) |
 |---|---|---|
-| Cross-sectional rows (Table 2, Fig. 1) | `crosssec_modskew_*.csv` | `run_p4_crosssec_modskew.R` |
-| Insurance severity, freMTPL2 heavy-tail rescue (Table 2, Fig. 2, Section 5.3) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
-| Soft-sensor rows (Table 2) | `p4_softsensor_honest_*.csv` | `run_p4_softsensor_honest.R` |
-| Platykurtic family | `platykurtic_family_*.csv` | `run_platykurtic_family.R` |
-| Tree-ensemble baselines (Table 2) | `ml_baselines_crossdomain*.csv` | `export_crossdomain_claim_rows_for_ml.R`, then `ml_baselines_crossdomain.py --trees 300` |
-| Final claim rows, split deltas, meta checkpoint (Tables 2 and 4, Figs. 1 and 4) | `final_claim_evidence_table.csv`, `final_claim_split_deltas.csv`, `final_claim_meta_analysis.csv` | `build_final_evidence_and_meta.R [Bboot]` |
-| Grouped inference (Table 4) | `grouped_inference_*.csv` | `run_grouped_inference_hardening.R [Bboot]` |
-| Validation-gated selector (Table 3, Fig. 3) | `dispatch_retune.csv` (medians), `dispatch_retune_splits.csv` (per split) | `run_dispatch_retune.R` |
-| Feature-richness boundary (Fig. 5) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
-| Drilling significance analysis and aggregation sensitivity | `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
-| Leakage audit, stacking, drilling tree baselines | `leakage_audit_vibration.csv`, `stacking_blocked.csv`, `ml_baselines_blocked.csv` | `run_leakage_audit.R`, `run_stacking_blocked_cv.R`, `export_blocked_cells_for_ml.R` + `ml_baselines_blocked.py` |
-| Tables 2–4, Figures 1–5 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
+| Skew-tilt ablation, proof of concept, regime map (Section 5.1) | `weak_ablation_raw.csv`, `weak_pmm_poc_raw.csv`, `weak_regime_map_raw.csv` | `run_weak_ablation.R`, `run_weak_pmm_poc.R`, `run_weak_regime_map.R` |
+| freMTPL2 heavy-tail rescue (Section 5.2, Fig. 1) | `insurance_severity_*.csv` | `run_insurance_severity.R` |
+| Archived per-split fits of the fifteen datasets (seed 0; inputs to Tables 2–3) | `crosssec_modskew_*.csv`, `insurance_severity_*.csv`, `p4_softsensor_honest_*.csv`, `final_claim_*.csv` | `run_p4_crosssec_modskew.R`, `run_insurance_severity.R`, `run_p4_softsensor_honest.R`, then `build_final_evidence_and_meta.R [Bboot]` |
+| Validation gate on all fifteen datasets, two extra seeds per method (Section 5.3, Table 2, Fig. 2) | `claimrow_robustness_raw.csv` (eight datasets), `claimrow_robustness_raw_pool.csv` (the other seven) | `run_claimrow_robustness.R [cores] [suffix] [datasets] [arms]`; the pool file comes from `run_claimrow_robustness.R 9 _pool mass_boston_medv,islr_wage,airquality_ozone,mass_cars93_mpg,insurance_autoclaims_paid,fremtpl2_severity_log,sru_y1_static valgate,seeds,repro` |
+| Tuned tree ensembles (Section 5.3, Table 2, Fig. 2) | `ml_tuned_trees_long.csv` (tuned and default fits on every outer split) | `export_allrows_for_ml.R`, then `python experiments/ml_tuned_trees.py` |
+| Table 2 and Fig. 2 inputs: gate vs best robust method and vs best tuned tree, untrimmed errors, row-level signed-rank test, gate vs hindsight-best weak estimator | `claimrow_candidate_pool.csv`, `claimrow_tuned_trees_summary.csv`, `claimrow_gate_splits.csv`, `claimrow_untrimmed_summary.csv`, `claimrow_rowlevel_summary.csv`, `claimrow_valgate_summary.csv` | `make_claimrow_robustness_summary.R` |
+| Cumulant-keyed vs validation gate on credit balance, twelve splits (Section 5.3) | `dispatch_retune.csv`, `dispatch_retune_splits.csv` | `run_dispatch_retune.R` |
+| Protocol lesson: five folds, seeds 0–2, purge gaps 50 and 100 (Section 5.4, Table 3) | `claimrow_seeds_summary.csv`, `claimrow_gap_summary.csv`, `claimrow_protocol_lesson.csv` | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R` |
+| Pre-registered ten-fold, five-seed blocked check (Section 5.4, Table 3 last column) | `blocked_power_raw.csv`, `blocked_power_summary.csv` | `run_blocked_power.R`, then `make_blocked_power_summary.R`; the decision rule is in `paper-4-weak-moment-gmdh/blocked-power-prereg-2026-10-04.md` |
+| Gate design checks: interleaved inner folds, library without Huber/LAD (Section 5.5) | `claimrow_ablation_summary.csv` (arms `rinner`, `norobust`) | `run_claimrow_robustness.R`, then `make_claimrow_robustness_summary.R`; interleaved folds are `valgate_inner = "random"` in `gmdh_pmm_control()` |
+| Gate design checks: window width 1.5 and 4 times the robust scale (Section 5.5) | `claimrow_sigma_summary.csv` | as above |
+| Convex stack vs discrete selector (Section 5.5) | `stacking_blocked.csv` | `run_stacking_blocked_cv.R` |
+| Feature-richness boundary (Section 5.6, Fig. 3) | `feature_count_sweep.csv` | `run_feature_count_sweep.R` |
+| Drilling case study: leakage, aggregation, block bootstrap (Section 4) | `leakage_audit_vibration.csv`, `pooled_significance.csv`, `aggregation_sensitivity.csv`, `honest_blocked_cv_*.csv`, `blockboot_ci.csv` | `run_leakage_audit.R`, `run_pooled_significance.R`, `run_aggregation_sensitivity.R`, `run_honest_blocked_cv*.R`, `run_blockboot_ci.R` |
+| Tables 2–3, Figures 1–3 | `latex/tables/`, `latex/figures/` | `make_latex_tables.R`, `make_latex_figures.R` |
 
-The remaining `run_weak_*.R` scripts are the development studies behind the
-estimator design (proof of concept, regime map, ablation, WPMM3 bandwidth probe,
-cascade checks); their CSVs are archived in `results/` as well.
+The remaining scripts are archived with their CSVs: the other development
+studies behind the estimator design (WPMM3 bandwidth probe, cascade and dispatch
+checks), the platykurtic family, the untuned tree baselines
+(`ml_baselines_crossdomain.py`, whose `ml_baselines_crossdomain_long.csv`
+`make_claimrow_robustness_summary.R` still reads, and `ml_baselines_blocked.py`)
+and the grouped and meta-analytic inference of an earlier version of the
+manuscript (`run_grouped_inference_hardening.R`, `final_claim_meta_analysis.csv`).
 
 ## Data
 
@@ -100,7 +116,7 @@ cascade checks); their CSVs are archived in `results/` as well.
 | UCI Gas Turbine CO/NOx (doi:10.24432/C5WC95, CC BY 4.0) | soft-sensor rows | `processed/gas_turbine_*.csv` |
 | SRU soft sensor (Mendeley Data doi:10.17632/kcpnnrn67p.1, CC BY 4.0) | soft-sensor rows | `processed/sru*.csv` |
 | UCI Concrete (doi:10.24432/C5PK67, CC BY 4.0) | cross-sectional rows | `processed/concrete.csv` |
-| `MASS`, `ISLR2`, `boot`, `insuranceData` R datasets | cross-sectional and insurance rows | loaded from the installed packages |
+| `MASS`, `ISLR2`, `boot`, `insuranceData` R datasets; `airquality` from base R | cross-sectional and insurance rows | loaded from the installed packages |
 | Utah FORGE drilling and downhole-vibration logs; Equinor Volve 15/9-F-15 | drilling significance analysis, feature-count sweep | **not redistributed** — download from the Utah FORGE / OpenEI Geothermal Data Repository and the Equinor Volve data village; the loaders in `paper-1-gmdh-pmm/code/R/data_drilling.R` document the expected columns |
 
 The derived results of the drilling scripts are archived in `results/`, so every

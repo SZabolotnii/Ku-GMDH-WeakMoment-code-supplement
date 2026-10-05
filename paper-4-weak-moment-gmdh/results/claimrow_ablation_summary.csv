@@ -1,0 +1,17 @@
+"dataset","role","arm","vs_valgate_paired_pct","vs_valgate_ratio_med_pct","vs_robust_paired_pct","wins_vs_robust","n_splits"
+"sru_y1_dynamic","strong_positive","rinner",0.26,0.85,-3.87,3,5
+"sru_y1_dynamic","strong_positive","norobust",-1.99,0.9,-4.06,4,5
+"gas_turbine_co_2015_raw","strong_positive","rinner",-0.74,-6.37,-4.6,4,5
+"gas_turbine_co_2015_raw","strong_positive","norobust",0,0,-2.88,4,5
+"gas_turbine_nox_2015_raw","strong_positive","rinner",4.09,9.49,-8.45,5,5
+"gas_turbine_nox_2015_raw","strong_positive","norobust",0.03,17.3,-13.34,3,5
+"islr_credit_balance","modest_positive","rinner",-0.46,-3.11,-3.3,19,30
+"islr_credit_balance","modest_positive","norobust",-1.28,-2.63,-1.8,18,30
+"insurance_autobi_loss","modest_positive","rinner",0,1.06,-3.86,22,30
+"insurance_autobi_loss","modest_positive","norobust",0,0,-4.79,26,30
+"fremtpl2_severity_raw","rescue_tie","rinner",0,0.4,-0.44,24,30
+"fremtpl2_severity_raw","rescue_tie","norobust",0,-0.17,-0.73,24,30
+"sru_y2_static","tie_control","rinner",-0.29,14.95,3.7,2,5
+"sru_y2_static","tie_control","norobust",-4.7,36.2,52.25,1,5
+"concrete","loss_control","rinner",-0.59,0.17,2.66,8,30
+"concrete","loss_control","norobust",0.51,1.09,3.15,5,30

@@ -1,0 +1,16 @@
+"dataset","best_default_tree","best_default_trmse","best_tuned_tree","best_tuned_trmse","tuned_vs_default_pct","n_splits","gate_vs_tuned_ratio_med_pct","gate_vs_tuned_paired_pct","gate_wins","gate_vs_tuned_rmse_paired_pct","gate_rmse_wins","gate_vs_default_paired_pct","gate_wins_vs_default"
+"sru_y1_dynamic","rf",0,"rf",0,-13.05,5,-20.59,-28.06,4,-6.37,3,-29.63,4
+"gas_turbine_co_2015_raw","extra",0.53,"rf",0.53,1.06,5,25.87,7.55,1,21.8,1,12.12,1
+"gas_turbine_nox_2015_raw","extra",2.25,"extra",2.25,0,5,67.58,31.95,0,45.41,0,31.95,0
+"islr_credit_balance","extra",50.65,"extra",50.65,0,30,7.04,14.83,7,50.7,0,14.83,7
+"insurance_autobi_loss","rf",3.4,"rf",3.27,-3.85,30,-49.22,-50.28,30,1.53,9,-52.25,30
+"fremtpl2_severity_raw","rf",1753.99,"rf",1589.96,-9.35,30,-56.81,-57.23,30,-5.77,24,-61.43,30
+"sru_y2_static","extra",0.04,"extra",0.03,-17.13,5,68.94,53.99,1,32.62,2,-19.94,3
+"concrete","hgb",2.74,"hgb",2.51,-8.42,30,162.31,163.64,0,106.84,0,141.23,0
+"mass_boston_medv","extra",1.85,"extra",1.82,-1.52,30,45.78,44.33,0,50.1,0,42.94,0
+"islr_wage","hgb",21.32,"rf",20.33,-4.63,30,0.18,0.73,12,3.77,0,-5.47,30
+"airquality_ozone","rf",10.75,"rf",11.12,3.5,30,27.3,27.54,2,21.95,5,30.51,2
+"mass_cars93_mpg","extra",1.59,"extra",1.55,-2.61,30,29.82,28.43,2,43.22,3,33.07,2
+"insurance_autoclaims_paid","hgb",1232.52,"extra",1171.31,-4.97,30,-19.39,-19.19,30,2.3,0,-22.97,30
+"fremtpl2_severity_log","rf",0.85,"extra",0.8,-5.94,30,-2.44,-1.84,30,1.17,1,-8.62,30
+"sru_y1_static","rf",0.03,"extra",0.02,-24.87,5,12.13,-2.27,3,5.09,1,-29.49,4

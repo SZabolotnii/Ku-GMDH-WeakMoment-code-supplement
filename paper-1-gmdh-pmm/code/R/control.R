@@ -40,6 +40,10 @@
 #' @param skew_strong |gamma3| above which PMM2 is taken outright (default 1.0).
 #' @param g2_threshold g2 cutoff for PMM2 (default 0.95).
 #' @param kurt_threshold gamma4 cutoff for PMM3 (default -0.7).
+#' @param valgate_inner inner-fold layout for \code{"auto-valgate"}:
+#'   \code{"blocked"} (default, contiguous blocks) or \code{"random"}
+#'   (interleaved folds from a fixed deterministic permutation; used only for
+#'   the inner-fold ablation, and it does not touch the RNG stream).
 #' @param seed RNG seed for the train/validation split (default NULL).
 #' @param boot_seed RNG seed passed to the bootstrap diagnostics (default NULL).
 #' @return a named list of validated control parameters.
@@ -53,6 +57,7 @@ gmdh_pmm_control <- function(split_ratio = 0.6, F = 10L, L_max = 10L,
                                               "WPMM2", "WPMM3", "PATP3", "auto-weak", "auto-valgate"),
                              valgate_candidates = c("LSE", "Huber", "L1", "WPMM2", "WPMM3"),
                              valgate_folds = 4L,
+                             valgate_inner = c("blocked", "random"),
                              patp_alpha = NULL,
                              weak_sigma_mult = 2.5,
                              kurt_heavy_skew = 8.0, kurt_heavy_sym = 3.0,
@@ -66,6 +71,7 @@ gmdh_pmm_control <- function(split_ratio = 0.6, F = 10L, L_max = 10L,
   criterion <- match.arg(criterion)
   pmm_mode <- match.arg(pmm_mode)
   force_method <- match.arg(force_method)
+  valgate_inner <- match.arg(valgate_inner)
   stopifnot(split_ratio > 0, split_ratio < 1, F >= 1, L_max >= 1, B >= 0)
   stopifnot(is.finite(ridge_lambda), ridge_lambda >= 0)
   stopifnot(is.finite(huber_k), huber_k > 0)
@@ -91,6 +97,7 @@ gmdh_pmm_control <- function(split_ratio = 0.6, F = 10L, L_max = 10L,
     tail_prob = tail_prob, train_index = train_index, val_index = val_index,
     robust = robust, weak_sigma_mult = weak_sigma_mult, patp_alpha = patp_alpha,
     valgate_candidates = valgate_candidates, valgate_folds = valgate_folds,
+    valgate_inner = valgate_inner,
     kurt_heavy_skew = kurt_heavy_skew, kurt_heavy_sym = kurt_heavy_sym,
     skew_min = skew_min, skew_strong = skew_strong,
     g2_threshold = g2_threshold, kurt_threshold = kurt_threshold,

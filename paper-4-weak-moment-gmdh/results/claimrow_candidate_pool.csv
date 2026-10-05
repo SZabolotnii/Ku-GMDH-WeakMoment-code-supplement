@@ -1,0 +1,16 @@
+"dataset","generator","protocol","weak_vs_robust_trmse_pct","outcome","in_table2","table2_role","robust_method","n_splits","gate_vs_robust_ratio_med_pct","gate_vs_robust_paired_pct","gate_wins","gate_vs_robust_rmse_paired_pct","hindsight_weak","gate_vs_hindsight_weak_paired_pct","family_delta_paired_min","family_delta_paired_max"
+"mass_boston_medv","run_p4_crosssec_modskew.R","random",3.45,"robust ahead (>=3%)",FALSE,NA,"L1",30,-0.8,-0.52,17,-1.52,"WPMM3",2.56,-5,0.53
+"islr_wage","run_p4_crosssec_modskew.R","random",-0.19,"within 3%",FALSE,NA,"Huber",30,-0.27,-0.54,19,0.79,"WPMM3",0.21,-0.55,-0.45
+"airquality_ozone","run_p4_crosssec_modskew.R","random",-3.36,"weak ahead (>=3%)",FALSE,NA,"Huber",30,6.79,2.79,13,1.29,"auto",2.82,-2.68,2.02
+"islr_credit_balance","run_p4_crosssec_modskew.R","random",-3.45,"weak ahead (>=3%)",TRUE,"modest_positive","L1",30,-10.37,-3.78,22,2.79,"WPMM2",2.51,-11.94,-2.87
+"concrete","run_p4_crosssec_modskew.R","random",2.96,"within 3%",TRUE,"loss_control","L1",30,0.88,2.38,7,0.56,"WPMM3",0.24,0.95,1.88
+"mass_cars93_mpg","run_p4_crosssec_modskew.R","random",-3.53,"weak ahead (>=3%)",FALSE,NA,"LSE",30,-2.78,4.26,12,10.7,"auto-weak",6.27,-4.97,-0.53
+"fremtpl2_severity_raw","run_insurance_severity.R","random",-0.4,"within 3%",TRUE,"rescue_tie","L1",30,-0.09,-0.38,22,0.02,"WPMM3",0.35,-0.86,-0.62
+"insurance_autobi_loss","run_insurance_severity.R","random",-3.09,"weak ahead (>=3%)",TRUE,"modest_positive","L1",30,-2.3,-2.69,23,0.13,"auto-weak",1.89,-4.41,-3.14
+"insurance_autoclaims_paid","run_insurance_severity.R","random",0.6,"within 3%",FALSE,NA,"Huber",30,-0.01,-0.02,17,-0.01,"WPMM3",-0.63,0.58,0.72
+"fremtpl2_severity_log","run_insurance_severity.R","random",-0.24,"within 3%",FALSE,NA,"L1",30,-0.34,-0.16,18,-0.5,"WPMM3",0.13,-0.39,-0.25
+"sru_y1_static","run_p4_softsensor_honest.R","blocked",-1.09,"within 3%",FALSE,NA,"Huber",5,-23.06,-0.25,3,0.2,"WPMM2",4.97,-10.01,3.44
+"sru_y1_dynamic","run_p4_softsensor_honest.R","blocked",-15.56,"weak ahead (>=3%)",TRUE,"strong_positive","Huber",5,-23.09,-17.17,4,5.48,"WPMM2",0.8,-5.53,1.03
+"sru_y2_static","run_p4_softsensor_honest.R","blocked",0.21,"within 3%",TRUE,"tie_control","LSE",5,46.34,6.97,2,-0.12,"WPMM2",0.96,-1.05,2.1
+"gas_turbine_co_2015_raw","run_p4_softsensor_honest.R","blocked",-10.14,"weak ahead (>=3%)",TRUE,"strong_positive","Huber",5,1.49,-0.56,3,-3.64,"WPMM2",1.35,-2.6,2.27
+"gas_turbine_nox_2015_raw","run_p4_softsensor_honest.R","blocked",-14.97,"weak ahead (>=3%)",TRUE,"strong_positive","ridge-LSE",5,-1.98,-1.98,4,3.65,"auto-weak",4.58,-6.8,-1.4

@@ -65,10 +65,15 @@ inner_estimate <- function(v1, v2, y, control = gmdh_pmm_control()) {
         q <- stats::quantile(abs(e), 0.9, names = FALSE); sqrt(mean(e[abs(e) <= q]^2)) }
       sub_ctrl <- control; sub_ctrl$B <- 0L
       fb <- n %/% kf
+      # "random" is the inner-fold ablation: the same fold sizes over a fixed
+      # pseudo-random permutation, so temporally adjacent rows fall on both sides.
+      ord <- if (identical(control$valgate_inner, "random")) {
+        order((sin(seq_len(n) * 12.9898) * 43758.5453) %% 1)
+      } else seq_len(n)
       err <- matrix(NA_real_, kf, length(cands), dimnames = list(NULL, cands))
       for (k in seq_len(kf)) {
         a <- (k - 1L) * fb + 1L; z <- if (k == kf) n else k * fb
-        sv <- a:z; si <- setdiff(seq_len(n), sv)                 # contiguous held-out block
+        sv <- ord[a:z]; si <- setdiff(seq_len(n), sv)            # held-out block
         if (length(si) < 12L || length(sv) < 4L) next
         for (j in seq_along(cands)) {
           sub_ctrl$force_method <- cands[j]

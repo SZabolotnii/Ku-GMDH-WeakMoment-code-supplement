@@ -1,0 +1,5 @@
+"dataset","role","hindsight_seed0_ratio_med_pct","hindsight_seed1_ratio_med_pct","hindsight_seed2_ratio_med_pct","gate5_paired_pct","gate5_wins","gate5_folds","gate10_paired_pct","gate10_wins","gate10_folds","gate10_gap50_paired_pct","verdict"
+"sru_y1_dynamic","strong_positive",-15.56,0.76,0.79,-17.17,4,5,-3.09,5,10,0.07,"no detectable difference"
+"gas_turbine_co_2015_raw","strong_positive",-10.14,2.4,1.93,-0.56,3,5,0.86,4,10,0.05,"no detectable difference"
+"gas_turbine_nox_2015_raw","strong_positive",-14.97,5.23,-15.76,-1.98,4,5,-2.63,6,10,-1.57,"no detectable difference"
+"sru_y2_static","tie_control",0.21,-14.98,4.27,6.97,2,5,2.89,4,10,-28.09,"no detectable difference"
