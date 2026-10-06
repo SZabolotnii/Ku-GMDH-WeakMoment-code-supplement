@@ -141,3 +141,7 @@ package. Dataset files remain under their own licences listed above.
 
 If you use this code, please cite the paper (reference to be added on
 publication) and this repository; citation metadata is in `CITATION.cff`.
+Release v1.0.0 (commit `d0451e2`), the version described in the paper, is archived on
+Zenodo as [10.5281/zenodo.23182503](https://doi.org/10.5281/zenodo.23182503); the
+concept DOI [10.5281/zenodo.23182502](https://doi.org/10.5281/zenodo.23182502) always
+resolves to the latest version.
